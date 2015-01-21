@@ -1,0 +1,115 @@
+.owl-container {
+    width: 380px;
+    height: 120px;
+    display: flex;
+    vertical-align: middle;
+    
+    border-style: solid;
+    border-width: 2px;
+    border-color: #cfcece;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.owl-nav-container {
+    position: relative;
+    width: 36px;
+    background-color: #f2f2f2;
+}
+.dummy {
+    padding-top: 100%;
+}
+
+.owl-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    text-align:center; /* Align center inline elements */
+    font: 0/0 a;
+}
+
+.owl-nav .centerer {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.owl-nav img {
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 32px;
+    max-height: 100%;  /* <-- Set maximum height to 100% of its parent */
+    max-width: 100%;   /* <-- Set maximum width to 100% of its parent */
+}
+
+.owl-nav:hover{
+    cursor: pointer;
+}
+
+.owl-carousel .owl-item .owl-text {
+    width: 60px;
+    height: 22px;
+    margin-left: 20%;
+    text-align: center;
+}
+
+.owl-carousel .owl-item.active.center .owl-text {
+    background-color: #464646;
+    color: #dddddd;
+}
+
+.item-container:hover {
+    cursor: pointer;
+}
+
+.owl-carousel .owl-item {
+    margin-top: 10px;
+}
+
+.owl-carousel .owl-item img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+.owl-carousel .owl-item p {
+    padding-top: 2px;
+}
+
+.owl-controls {
+    display: none;
+}
+
+
+.owl-item.active.center .wrapper {
+    border-left: 2px solid #cfcece;
+    border-right: 2px solid #cfcece;
+}
+
+.wrapper {
+    margin-top: 4px;
+    height: 58px;
+    width: 90px;
+}
+
+.stick{
+    border-left: 2px solid #cfcece;
+    height: 4px;
+}
+
+.empty{
+    height: 50px;
+}
+
+.content{ float: left }
+
+.owl-item.active.center .left {display:block;}
+.owl-item.active.center .right {display:block;}
+.left{ display:none;float: left; height: 54px; }
+.right{ display:none;float: right; height: 54px; }
+
+.clear{ clear: both }
