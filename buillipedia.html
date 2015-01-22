@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
   <link rel="stylesheet" href="css/vis.css">
   <link rel="stylesheet" href="css/node_map.css">
-
+  <link rel="stylesheet" href="css/tags.css">
   </head>
   <body>
     <div ng-controller="BullipediaDemoCtrl as ctrl">
-        <ui-select multiple id="selector" ng-model="ctrl.selectedColors" theme="bootstrap" ng-disabled="disabled" style="width: 300px;" ng-change="ctrl.updateNodes()" >
+        <ui-select multiple id="selector" ng-model="ctrl.selectedColors" theme="bootstrap" ng-disabled="disabled" style="width: 307px;" ng-change="ctrl.updateNodes()" >
         <ui-select-match placeholder="Select colors..." id="test">{{$item.name}}</ui-select-match>
         <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
           {{color.name}}

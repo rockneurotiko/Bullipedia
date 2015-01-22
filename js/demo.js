@@ -219,6 +219,7 @@ BullipediaDemoCtrl.prototype.draw = function (){
     //this.scope.$select.activate();
     this.addNode(data.id, data.x, data.y);
   }
+
 }
 
 app.controller('BullipediaDemoCtrl', ['$scope', BullipediaDemoCtrl]); 
