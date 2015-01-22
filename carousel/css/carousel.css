@@ -42,7 +42,11 @@
 }
 
 .owl-nav img {
-    margin-top: 40%;
+    margin-top: 44px;
+    margin-bottom: 44px;
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+    
     vertical-align: middle;
     display: inline-block;
     width: 20px;
@@ -51,7 +55,10 @@
     max-width: 100%;   /* <-- Set maximum width to 100% of its parent */
 }
 
-.owl-nav:hover{
+.owl-nav.owl-next:hover{
+    cursor:pointer;
+}
+.owl-nav.owl-prev:hover{
     cursor: pointer;
 }
 
@@ -96,8 +103,7 @@
 
 .owl-item.active.center .wrapper {
     border-left: 2px solid #cfcece;
-    border-right: 2px solid #cfcece;
-    
+    border-right: 2px solid #cfcece;    
 }
 
 .wrapper {
@@ -113,7 +119,7 @@
 }
 
 .empty{
-    height: 50px;
+    height: 57px;
 }
 
 .content{ float: left }

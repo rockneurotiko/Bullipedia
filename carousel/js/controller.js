@@ -23,8 +23,8 @@ var DemoCtrl = function($scope) {
     });
   });
 
-    this.selected = this.types[this.images[0].name];
-  this.name_selected = this.images[0].name;
+    this.selected = []; //this.types[this.images[0].name];
+    this.name_selected = ""; // this.images[0].name;
     
   $scope.update = function(name){
     $scope.$apply(function(){  
@@ -34,20 +34,21 @@ var DemoCtrl = function($scope) {
   };
 
   $scope.update_n = function(n){
-    $scope.$apply(function(){
+      $scope.$apply(function(){
       var selected = urls[n].split("/")[1].split(".")[0].toUpperCase();
-      mythis.select = mythis.types[selected];
+      mythis.selected = mythis.types[selected];
       mythis.name_selected = selected;
     });
   };
 
   $scope.select = function(image,u){
-    if(image.name === mythis.name_selected){
+      if(image.name === mythis.name_selected){
       return image.image.split(".")[0] + "_color.svg";
     }
     return image.image;
   };
-  
+
+    
   $scope.selected = function(image){
     //console.log(mythis.name_selected);
     return image.name === mythis.name_selected;

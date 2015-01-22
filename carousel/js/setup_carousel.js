@@ -1,3 +1,30 @@
+// var find_first = function(arr){
+//   console.log(arr);
+//     for (i in arr){
+//       if(arr[i].trim() != ""){
+//         console.log(arr[i]);
+//             return arr[i].trim();
+//       }
+//     }
+// };
+
+// var find_last = function(arr){
+//   console.log(arr);
+//     var last = "";
+//     arr.forEach(function(n){
+//         if(n.trim() != "")
+//             last = n.trim();
+//     });
+//     return last;
+// };
+
+// var move_f = function(func) {
+//     var cent = $('.owl-item.active');
+//     var l = func(cent.text().split('\n'));
+//     var f = angular.element(cent).scope().update;
+    
+//   //f(l);
+// };
 function selectText(containerid) {
         if (document.selection) {
             var range = document.body.createTextRange();
@@ -34,7 +61,8 @@ $(document).ready(function(){
   owl.on('changed.owl.carousel', function(event) {
       var diff = event.isTrigger;
       var n = event.item.index;
-      var n_f = Math.abs(diff-n);
+      var elems = event.item.count;
+      var n_f = Math.abs(diff-n) % elems;
       var cent = $('.owl-item.active');
       var f = angular.element(cent).scope().update_n;
       f(n_f); // Call the update in scope
