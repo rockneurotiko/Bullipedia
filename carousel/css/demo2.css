@@ -11,17 +11,19 @@
     -moz-border-radius: 2px;
     border-radius: 2px;
 }
+
 .owl-nav-container {
     position: relative;
-    width: 36px;
+    width: 36px !important;
     background-color: #f2f2f2;
 }
+
 .dummy {
     padding-top: 100%;
 }
 
 .owl-nav {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     bottom: 0;
     left: 0;
@@ -29,6 +31,8 @@
     
     text-align:center; /* Align center inline elements */
     font: 0/0 a;
+
+    width: 32px;
 }
 
 .owl-nav .centerer {
@@ -38,6 +42,7 @@
 }
 
 .owl-nav img {
+    margin-top: 40%;
     vertical-align: middle;
     display: inline-block;
     width: 20px;
@@ -50,10 +55,14 @@
     cursor: pointer;
 }
 
+.owl-carousel {
+    width: 316px;
+}
+
 .owl-carousel .owl-item .owl-text {
-    width: 60px;
+    width: 75px;
     height: 22px;
-    margin-left: 20%;
+    margin-left: 9.5%;
     text-align: center;
 }
 
@@ -71,10 +80,10 @@
 }
 
 .owl-carousel .owl-item img {
-    width: 60px;
-    height: 60px;
+    height: 65px;
+    width: 75px;
     cursor: pointer;
-    margin-left: 15px;
+    margin-left: 5px;
 }
 .owl-carousel .owl-item p {
     padding-top: 2px;
@@ -88,11 +97,13 @@
 .owl-item.active.center .wrapper {
     border-left: 2px solid #cfcece;
     border-right: 2px solid #cfcece;
+    
 }
 
 .wrapper {
     margin-top: 4px;
-    height: 58px;
+    margin-bottom: -8px;
+    height: 65px;
     width: 90px;
 }
 
