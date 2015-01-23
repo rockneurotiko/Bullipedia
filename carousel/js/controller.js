@@ -8,9 +8,10 @@ var DemoCtrl = function($scope) {
                 'CEREALS': ['Cereals0','Cereals1','Cereals2','Cereals3','Cereals4','Cereals5'],
                 'DAIRYS': ['Dairy0','Dairy1','Dairy2','Dairy3','Dairy4','Dairy5'],
                 'FISH': ['Fish0','Fish1','Fish2','Fish3','Fish4','Fish5'],
-                'MILK': ['Milk0','Milk1','Milk2','Milk3','Milk4','Milk5']};
+                'MILK': ['Milk0','Milk1','Milk2','Milk3','Milk4','Milk5'],
+                'SPICES': ['Spices0','Spices1','Spices2','Spices3','Spices4','Spices5',]};
 
-    var urls = ["img/veg.svg", "img/fruit.svg","img/meat.svg", "img/cereals.svg", "img/dairys.svg","img/fish.svg", "img/milk.svg"];
+    var urls = ["img/veg.svg", "img/fruit.svg","img/meat.svg", "img/cereals.svg", "img/dairys.svg","img/fish.svg", "img/milk.svg", "img/spices.svg"];
 
   var mythis = this;
   angular.forEach(urls, function(url){

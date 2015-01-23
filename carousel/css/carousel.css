@@ -1,20 +1,20 @@
 .owl-container {
-    width: 380px;
-    height: 120px;
+    width: 305px;
+    height: 87px;
     display: flex;
     vertical-align: middle;
     
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-color: #cfcece;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
 }
 
 .owl-nav-container {
     position: relative;
-    width: 36px !important;
+    width: 25px !important;
     background-color: #f2f2f2;
 }
 
@@ -32,7 +32,7 @@
     text-align:center; /* Align center inline elements */
     font: 0/0 a;
 
-    width: 32px;
+    width: 25px;
 }
 
 .owl-nav .centerer {
@@ -42,15 +42,15 @@
 }
 
 .owl-nav img {
-    margin-top: 44px;
-    margin-bottom: 44px;
-    margin-left: 7.5px;
-    margin-right: 7.5px;
+    margin-top: 31px;
+    margin-bottom: 31px;
+    margin-left: 5px;
+    margin-right: 5px;
     
     vertical-align: middle;
     display: inline-block;
-    width: 20px;
-    height: 32px;
+    width: 15px;
+    height: 25px;
     max-height: 100%;  /* <-- Set maximum height to 100% of its parent */
     max-width: 100%;   /* <-- Set maximum width to 100% of its parent */
 }
@@ -63,18 +63,23 @@
 }
 
 .owl-carousel {
-    width: 316px;
+    width: 257px;
 }
 
 .owl-carousel .owl-item .owl-text {
-    width: 75px;
-    height: 22px;
-    margin-left: 9.5%;
+    width: 52px;
+    height: 17px;
+    margin-left: 25%;
     text-align: center;
+
+    font-family: 'Open Sans';
+    font-size: 13.4px;
+    color: rgb(51,51,51);
+    
 }
 
 .owl-carousel .owl-item.active.center .owl-text {
-    background-color: #464646;
+    background-color: #FFB505;
     color: #dddddd;
 }
 
@@ -83,17 +88,18 @@
 }
 
 .owl-carousel .owl-item {
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .owl-carousel .owl-item img {
-    height: 65px;
-    width: 75px;
+    max-width: 75px;
+    position: absolute;
+    top: 0;
+    left: 5px;
     cursor: pointer;
-    margin-left: 5px;
 }
 .owl-carousel .owl-item p {
-    padding-top: 2px;
+    /* padding-top: 2px; */
 }
 
 .owl-controls {
@@ -107,19 +113,19 @@
 }
 
 .wrapper {
-    margin-top: 4px;
-    margin-bottom: -8px;
-    height: 65px;
-    width: 90px;
+    margin-top: 15px;
+    margin-bottom: -4px;
+    height: 40px;
+    width: 81px;
 }
 
 .stick{
-    border-left: 2px solid #cfcece;
-    height: 4px;
+    border-left: 3px solid #cfcece;
+    height: 2px;
 }
 
 .empty{
-    height: 57px;
+    height: 36px;
 }
 
 .content{ float: left }
