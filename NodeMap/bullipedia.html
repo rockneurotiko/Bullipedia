@@ -1,0 +1,46 @@
+<!doctype html>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<html ng-app="angularApp">
+  <head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/vis.js"></script>
+  <script src="select/select.js"></script>
+
+  <link rel="stylesheet" href="select/select.css">
+
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+  <link rel="stylesheet" href="css/vis.css">
+  <link rel="stylesheet" href="css/node_map.css">
+  <link rel="stylesheet" href="css/tags.css">
+  </head>
+  <body>
+    <div ng-controller="BullipediaDemoCtrl as ctrl">
+        <ui-select multiple id="selector" ng-model="ctrl.selectedColors" theme="bootstrap" ng-disabled="disabled" style="width: 307px;" ng-change="ctrl.updateNodes()" >
+        <ui-select-match placeholder="Select colors..." id="test">{{$item.name}}</ui-select-match>
+        <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
+          {{color.name}}
+        </ui-select-choices>
+      </ui-select>
+      <p>Selected: {{ctrl.selectedColors}}</p>      
+    
+    <div id="network-popUp">
+      <span id="operation">node</span> <br>
+      <table style="margin:auto;"><tr>
+        <td>id</td><td><input id="node-id" value="new value"></td>
+      </tr>
+        <tr>
+          <td>label</td><td><input id="node-label" value="new value"> </td>
+        </tr></table>
+      <input type="button" value="save" id="saveButton"></button>
+      <input type="button" value="cancel" id="cancelButton"></button>
+    </div>
+    <br />
+    <div id="mynetwork"></div>
+
+    <p id="selection"></p>
+    </div>
+  </body>
+</html>
+
