@@ -2,10 +2,9 @@ body {
   font: 10pt sans;
 }
 #mynetwork {
-  position:relative;
-  width: 600px;
-  height: 600px;
-  border: 1px solid lightgray;
+  position: relative;
+  width: 100%;
+  height: 380px;  
 }
 table.legend_table {
   font-size: 11px;
@@ -57,4 +56,55 @@ div.table_description {
 }
 div.vis.network-frame:lastChild{
   box-shadow: none;
+}
+
+#nodesToolbar{
+  height: 53px;
+  background-color: #f2f2f2;
+  width: 100%;
+  padding: 5px;
+}
+
+#nodesFooter{
+  height: 44px;
+  background-color: #f2f2f2;
+  width: 100%;
+}
+
+#networkContainer{
+  width: 655px;
+  height: 479px;
+  border: 1px solid #cfcece;
+  border-radius: 3px;
+}
+
+.nodesButton{
+  display: inline-block;
+  padding: 0px 5px;
+  height: 43px;
+  line-height: 43px;
+  background-position: -10px;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+}
+
+#familyButton{
+  background-image: url(img/network/family_black.svg);
+  padding-left: 45px;
+}
+#fusionButton{
+  background-image: url(img/network/fusion_black.svg);
+  padding-left: 45px;
+}
+#enjoyButton{
+  background-image: url(img/network/enjoy_black.svg);
+  padding-left: 50px;
+}
+#ingredientButton{
+  background-image: url(img/network/ingredient_black.svg);
+  padding-left: 50px;
+}
+#removeButton{
+  background-image: url(img/network/delete_black.svg);
+  padding-left: 35px;
 }
