@@ -37,7 +37,17 @@
       <input type="button" value="cancel" id="cancelButton"></button>
     </div>
     <br />
-    <div id="mynetwork"></div>
+    <div id = "networkContainer">
+      <div id="nodesToolbar">
+        <div class= "nodesButton" id ="familyButton">FAMILY</div>
+        <div class= "nodesButton" id ="ingredientButton">ADD INGREDIENT</div>
+        <div class= "nodesButton" id ="fusionButton" ng-click ="ctrl.activateAddEdge()">FUSION</div>
+        <div class= "nodesButton" id ="removeButton">REMOVE</div>
+        <div class= "nodesButton" id ="enjoyButton">ENJOY</div>
+      </div>
+      <div id="mynetwork"></div>
+      <div id="nodesFooter"></div>
+    </div>
 
     <p id="selection"></p>
     </div>
