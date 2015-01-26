@@ -49,15 +49,15 @@ var DemoCtrl = function($scope, Data) {
 };
 
 
-var DemoCtrl2 = function($scope, Data){
-    $scope.selected = [];
-    $scope.$watch(function () { return Data.getSelected(); }, function (newValue) {
-        if (newValue) $scope.selected = newValue;
-    });
-};
+// var DemoCtrl2 = function($scope, Data){
+//     $scope.selected = [];
+//     $scope.$watch(function () { return Data.getSelected(); }, function (newValue) {
+//         if (newValue) $scope.selected = newValue;
+//     });
+// };
 
 app.controller('DemoCtrl', DemoCtrl);
-app.controller("Demo", DemoCtrl2);
+// app.controller("Demo", DemoCtrl2);
 
 
 var BullipediaDemoCtrl = function($scope, Data) {
@@ -264,16 +264,34 @@ BullipediaDemoCtrl.prototype.draw = function (){
         this.addNode(data.id, data.x, data.y);
     }
 };
+
+BullipediaDemoCtrl.prototype.activateAddNode = function(){
+    if (this.mode != "addingNodes"){
+        this.mode = "addingNodes";
+        $("#ingredientButton").addClass("selected");
+        setTimeout(function(){
+            $(".ui-select-search.input-xs").click();
+            $(".ui-select-search.input-xs").focus();
+        }, 0);
+    }  else{
+        this.mode = "";
+        $("#ingredientButton").removeClass("selected");
+        setTimeout(function(){
+            $(".ui-select-search.input-xs").val("");
+        });
+    }
+};
+
 BullipediaDemoCtrl.prototype.activateAddEdge = function(){
     if (this.mode != "addingEdges"){
         this.network._toggleEditMode();
         this.network._createAddEdgeToolbar();
-        this.mode = "addingEdges";    
-        addClass(document.getElementById('fusionButton'), 'selected');
+        this.mode = "addingEdges";
+        $("#fusionButton").addClass("selected");
     }else{  
         this.network._toggleEditMode();
-        removeClass(document.getElementById('fusionButton'), 'selected');
         this.mode = "";
+        $("#fusionButton").removeClass("selected");
     }
 //createManipulatorBar
 };
@@ -281,18 +299,3 @@ BullipediaDemoCtrl.prototype.activateAddEdge = function(){
 app.controller('BullipediaDemoCtrl', ['$scope', 'Data', BullipediaDemoCtrl]); 
 
 
-//Functions for adding/removing css classes
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
- 
-function addClass(ele,cls) {
-  if (!hasClass(ele,cls)) ele.className += " "+cls;
-}
- 
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-      var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}

@@ -114,7 +114,7 @@ div.vis.network-frame:lastChild{
   background-position: -20px;
 }
 
-#enjoyButton:hover, #familyButton.selected{
+#enjoyButton:hover, #enjoyButton.selected{
   background-image: url(img/network/enjoy_color.svg);
 }
 
@@ -124,7 +124,7 @@ div.vis.network-frame:lastChild{
   background-position: -15px -15px;
 }
 
-#ingredientButton:hover, #familyButton.selected{
+#ingredientButton:hover, #ingredientButton.selected{
   background-image: url(img/network/ingredient_color.svg);
 }
 
