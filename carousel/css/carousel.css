@@ -93,10 +93,10 @@
 }
 
 .owl-carousel .owl-item img {
-    max-width: 75px;
+    max-width: 70px;
     position: absolute;
     top: 0;
-    left: 5px;
+    left: 7.5px;
     cursor: pointer;
 }
 .owl-carousel .owl-item p {
