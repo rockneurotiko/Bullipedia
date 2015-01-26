@@ -73,6 +73,7 @@ var BullipediaDemoCtrl = function($scope, Data) {
     this.selectedColors = []; 
     this.oldSelectedColors = this.selectedColors;
     this.nodes = new vis.DataSet();
+    this.edges = new vis.DataSet();
 
     this.draw();
 };
@@ -175,8 +176,7 @@ BullipediaDemoCtrl.prototype.draw = function (){
     for (i=0; i< this.selectedColors.length; i++){
         this.addNode(i);
     }
-    edges = [];
-
+    
     var connectionCount = [];
 
     // randomly create some nodes and edges
@@ -185,7 +185,7 @@ BullipediaDemoCtrl.prototype.draw = function (){
     var container = document.getElementById('mynetwork');
     var data = {
         nodes: this.nodes,
-        edges: edges
+        edges: this.edges
     };
     var options = {
         stabilize: false,
@@ -221,15 +221,7 @@ BullipediaDemoCtrl.prototype.draw = function (){
         }.bind(this),
         
         onDelete: function(data,callback) {
-            for (var i = 0; i < this.selectedColors.length; i++){
-                if (this.selectedColors[i].id == data.nodes[0]){
-                    this.oldSelectedColors = this.selectedColors;
-                    this.oldSelectedColors.splice(i, 1);//Weird trick to make it update the tags, using only splice makes it to not refresh them properly
-                    this.selectedColors = this.oldSelectedColors.slice();
-                    var div = document.getElementById('selector').focus();
-                    break;
-                }
-            }
+            this.refreshSelector();
             callback(data);  // call the callback to delete the objects.
         }.bind(this)
     };
@@ -237,8 +229,10 @@ BullipediaDemoCtrl.prototype.draw = function (){
 
     // add event listeners
     this.network.on('select', function(params) {
-        document.getElementById('selection').innerHTML = 'Selection: ' + params.nodes;
-    });
+        this.nodes.remove(params.nodes);
+        this.edges.remove(params.edges);
+        this.refreshSelector();
+    }.bind(this));
 
     this.network.on("resize", function(params) {console.log(params.width,params.height);});
     function clearPopUp() {
@@ -294,6 +288,17 @@ BullipediaDemoCtrl.prototype.activateAddEdge = function(){
         $("#fusionButton").removeClass("selected");
     }
 //createManipulatorBar
+};
+BullipediaDemoCtrl.prototype.refreshSelector = function(){
+   for (var i = 0; i < this.selectedColors.length; i++){
+        if (this.selectedColors[i].id == data.nodes[0]){
+            this.oldSelectedColors = this.selectedColors;
+            this.oldSelectedColors.splice(i, 1);//Weird trick to make it update the tags, using only splice makes it to not refresh them properly
+            this.selectedColors = this.oldSelectedColors.slice();
+            var div = document.getElementById('selector').focus();
+            break;
+        }
+    }
 };
 
 app.controller('BullipediaDemoCtrl', ['$scope', 'Data', BullipediaDemoCtrl]); 
