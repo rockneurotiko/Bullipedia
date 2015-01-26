@@ -69,6 +69,7 @@ var BullipediaDemoCtrl = function($scope, Data) {
         if (newValue) mythis.availableColors = newValue;
     });
     
+    this.mode = "";
     this.selectedColors = []; 
     this.oldSelectedColors = this.selectedColors;
     this.nodes = new vis.DataSet();
@@ -149,10 +150,12 @@ BullipediaDemoCtrl.prototype.addNode = function (index, x, y){
         id: this.selectedColors[index].id,
         label: this.selectedColors[index].name.split(' ').map(function(x){return x[0];}).join('') ,
         title: tooltip,
-        shape: 'circle',
+        shape: 'circle',        
+        fontSize: 16,
+        fontColor: 'white',
         color: {
             background: color, //this.selectedColors[index].name,
-            border: 'black'
+            border: color
         }
         //mass: (index+1) * 0.2
     };
@@ -208,32 +211,14 @@ BullipediaDemoCtrl.prototype.draw = function (){
             div.style.display = 'block';
         }.bind(this),
 
-        onEdit: function(data,callback) {
-            var span = document.getElementById('operation');
-            var idInput = document.getElementById('node-id');
-            var labelInput = document.getElementById('node-label');
-            var saveButton = document.getElementById('saveButton');
-            var cancelButton = document.getElementById('cancelButton');
-            var div = document.getElementById('network-popUp');
-            span.innerHTML = "Edit Node";
-            idInput.value = data.id;
-            labelInput.value = data.label;
-            saveButton.onclick = saveData.bind(this,data,callback);
-            cancelButton.onclick = clearPopUp.bind();
-            div.style.display = 'block';
-        }.bind(this),
-
         onConnect: function(data,callback) {
-            if (data.from == data.to) {
-                var r=confirm("Do you want to connect the node to itself?");
-                if (r==true) {
-                    callback(data);
-                }
-            }
-            else {
-                callback(data);
-            }
-        },
+            callback(data);
+            setTimeout(function(){
+                this.mode = "";
+                this.network._toggleEditMode();
+                this.activateAddEdge();            
+            }.bind(this), 10);
+        }.bind(this),
         
         onDelete: function(data,callback) {
             for (var i = 0; i < this.selectedColors.length; i++){
@@ -280,11 +265,34 @@ BullipediaDemoCtrl.prototype.draw = function (){
     }
 };
 BullipediaDemoCtrl.prototype.activateAddEdge = function(){
-
-    this.network.editMode = true;
-    this.network._createAddEdgeToolbar();
-    this.addingEdges = true;
-
+    if (this.mode != "addingEdges"){
+        this.network._toggleEditMode();
+        this.network._createAddEdgeToolbar();
+        this.mode = "addingEdges";    
+        addClass(document.getElementById('fusionButton'), 'selected');
+    }else{  
+        this.network._toggleEditMode();
+        removeClass(document.getElementById('fusionButton'), 'selected');
+        this.mode = "";
+    }
+//createManipulatorBar
 };
 
 app.controller('BullipediaDemoCtrl', ['$scope', 'Data', BullipediaDemoCtrl]); 
+
+
+//Functions for adding/removing css classes
+function hasClass(ele,cls) {
+  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+ 
+function addClass(ele,cls) {
+  if (!hasClass(ele,cls)) ele.className += " "+cls;
+}
+ 
+function removeClass(ele,cls) {
+  if (hasClass(ele,cls)) {
+      var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+    ele.className=ele.className.replace(reg,' ');
+  }
+}
