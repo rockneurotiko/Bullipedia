@@ -150,32 +150,9 @@ BullipediaDemoCtrl.prototype.draw = function (){
       cancelButton.onclick = clearPopUp.bind();
       div.style.display = 'block';
     }.bind(this),
-
-    onEdit: function(data,callback) {
-      var span = document.getElementById('operation');
-      var idInput = document.getElementById('node-id');
-      var labelInput = document.getElementById('node-label');
-      var saveButton = document.getElementById('saveButton');
-      var cancelButton = document.getElementById('cancelButton');
-      var div = document.getElementById('network-popUp');
-      span.innerHTML = "Edit Node";
-      idInput.value = data.id;
-      labelInput.value = data.label;
-      saveButton.onclick = saveData.bind(this,data,callback);
-      cancelButton.onclick = clearPopUp.bind();
-      div.style.display = 'block';
-    }.bind(this),
-
-    onConnect: function(data,callback) {
-      if (data.from == data.to) {
-        var r=confirm("Do you want to connect the node to itself?");
-        if (r==true) {
-          callback(data);
-        }
-      }
-      else {
-        callback(data);
-      }
+  onConnect: function(data,callback) {
+      this.addingEdges = false;
+      callback(data);
     },
     onDelete: function(data,callback) {
       for (var i = 0; i < this.selectedColors.length; i++){
