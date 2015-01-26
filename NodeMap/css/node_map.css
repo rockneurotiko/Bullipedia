@@ -134,7 +134,7 @@ div.vis.network-frame:lastChild{
   background-position: -15px;
 }
 
-#removeButton:hover{
+#removeButton:hover, #removeButton.selected{
   background-image: url(img/network/delete_color.svg);
 }
 

@@ -221,6 +221,7 @@ BullipediaDemoCtrl.prototype.draw = function (){
         }.bind(this),
         
         onDelete: function(data,callback) {
+            console.log(data);
             this.refreshSelector();
             callback(data);  // call the callback to delete the objects.
         }.bind(this)
@@ -228,10 +229,12 @@ BullipediaDemoCtrl.prototype.draw = function (){
     this.network = new vis.Network(container, data, options);
 
     // add event listeners
-    this.network.on('select', function(params) {
-        this.nodes.remove(params.nodes);
-        this.edges.remove(params.edges);
-        this.refreshSelector();
+    this.network.on('select', function(data) {
+        if (this.mode == "removing") {
+            this.nodes.remove(data.nodes);
+            this.edges.remove(data.edges);
+            this.refreshSelector(data);
+        }
     }.bind(this));
 
     this.network.on("resize", function(params) {console.log(params.width,params.height);});
@@ -261,6 +264,7 @@ BullipediaDemoCtrl.prototype.draw = function (){
 
 BullipediaDemoCtrl.prototype.activateAddNode = function(){
     if (this.mode != "addingNodes"){
+        this.do_clean_menu();
         this.mode = "addingNodes";
         $("#ingredientButton").addClass("selected");
         setTimeout(function(){
@@ -278,6 +282,7 @@ BullipediaDemoCtrl.prototype.activateAddNode = function(){
 
 BullipediaDemoCtrl.prototype.activateAddEdge = function(){
     if (this.mode != "addingEdges"){
+        this.do_clean_menu();
         this.network._toggleEditMode();
         this.network._createAddEdgeToolbar();
         this.mode = "addingEdges";
@@ -289,16 +294,38 @@ BullipediaDemoCtrl.prototype.activateAddEdge = function(){
     }
 //createManipulatorBar
 };
-BullipediaDemoCtrl.prototype.refreshSelector = function(){
+
+BullipediaDemoCtrl.prototype.activateRemove = function(){
+    if (this.mode != "removing"){
+        this.do_clean_menu();
+        this.mode = "removing";
+        $("#removeButton").addClass("selected");
+    }else{
+        this.mode = "";
+        $("#removeButton").removeClass("selected");
+    }
+    //createManipulatorBar
+};
+
+BullipediaDemoCtrl.prototype.refreshSelector = function(data){
    for (var i = 0; i < this.selectedColors.length; i++){
         if (this.selectedColors[i].id == data.nodes[0]){
             this.oldSelectedColors = this.selectedColors;
-            this.oldSelectedColors.splice(i, 1);//Weird trick to make it update the tags, using only splice makes it to not refresh them properly
+            this.oldSelectedColors.splice(i, 1);  //Weird trick to make it update the tags, using only splice makes it to not refresh them properly
             this.selectedColors = this.oldSelectedColors.slice();
-            var div = document.getElementById('selector').focus();
+            $(".ui-select-search.input-xs").click();
             break;
         }
     }
+};
+
+BullipediaDemoCtrl.prototype.do_clean_menu = function(){
+    if (this.mode === "addingNodes")
+        this.activateAddNode();
+    else if (this.mode === "addingEdges")
+        this.activateAddEdge();
+    else if (this.mode === "removing")
+        this.activateRemove();
 };
 
 app.controller('BullipediaDemoCtrl', ['$scope', 'Data', BullipediaDemoCtrl]); 
