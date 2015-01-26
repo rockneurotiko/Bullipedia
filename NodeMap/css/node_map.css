@@ -78,6 +78,12 @@ div.vis.network-frame:lastChild{
   border-radius: 3px;
 }
 
+.nodesButton:hover{
+  background-color: #f9f9f9;  
+  border: solid 1px #e0e0e0;
+  cursor: pointer;
+}
+
 .nodesButton{
   display: inline-block;
   padding: 0px 5px;
@@ -86,25 +92,53 @@ div.vis.network-frame:lastChild{
   background-position: -10px;
   background-repeat: no-repeat;
   margin-left: 8px;
+  border: solid 1px #f2f2f2;
 }
 
+#familyButton:hover, #familyButton.selected{
+  background-image: url(img/network/family_color.svg);
+}
 #familyButton{
   background-image: url(img/network/family_black.svg);
   padding-left: 45px;
 }
+
+#fusionButton:hover, #familyButton.selected{
+  background-image: url(img/network/fusion_color.svg);
+}
+
 #fusionButton{
   background-image: url(img/network/fusion_black.svg);
   padding-left: 45px;
 }
+
+#enjoyButton:hover, #familyButton.selected{
+  background-image: url(img/network/enjoy_color.svg);
+}
+
 #enjoyButton{
   background-image: url(img/network/enjoy_black.svg);
   padding-left: 50px;
 }
+
+#ingredientButton:hover, #familyButton.selected{
+  background-image: url(img/network/ingredient_color.svg);
+}
+
 #ingredientButton{
   background-image: url(img/network/ingredient_black.svg);
   padding-left: 50px;
 }
+
+#removeButton:hover, #familyButton.selected{
+  background-image: url(img/network/delete_color.svg);
+}
+
 #removeButton{
   background-image: url(img/network/delete_black.svg);
   padding-left: 35px;
+}
+
+.network-manipulation-editMode {
+  display: none !important;
 }
