@@ -85,26 +85,30 @@ var BullipediaDemoCtrl = function($scope, Data) {
         var height = $(window).height();
         
         if (width < 1038){
+            if (!this.is_small){
+                $("#carousel").hide();
+                $("#carousel").detach().prependTo("#networkContainer");
+                $("#carousel").addClass("floating");
+                $("#my_selector").hide();
+                $("#my_selector").detach().prependTo("#networkContainer");
+                $("#my_selector").addClass("floating");
+            }
             this.is_small = true;
-            //$("#carousel").hide();
-            //$("#selector").hide();
-            $("#my_selector").detach().prependTo("#networkContainer");
-            $("#my_selector").addClass("floating");
-            $("#carousel").detach().prependTo("#networkContainer");
-            $("#carousel").addClass("floating");
         }
         else {
             if(this.is_small){
                 $("#carousel").detach().prependTo("#the_father");
                 $("#carousel").removeClass("floating");       
                 $("#my_selector").detach().prependTo("#second_father");
-                $("#my_selector").removeClass("floating");       
+                $("#my_selector").removeClass("floating");
+
+                if (this.mode === "family" || this.mode === "addingNodes")
+                    this.do_clean_menu();
             }
             this.is_small = false;
             $("#carousel").show();
             $("#my_selector").show();
-
-            
+            $("#shadow").hide(); 
         }
 
         console.log(this.is_small);
@@ -303,21 +307,48 @@ BullipediaDemoCtrl.prototype.draw = function (){
     }
 };
 
+BullipediaDemoCtrl.prototype.activateFamily = function(){
+    if(this.is_small){
+        if(this.mode != "family"){
+            this.do_clean_menu();
+            this.mode = "family";
+            $("#familyButton").addClass("selected");
+
+            $("#carousel").show();
+            $("#shadow").show();
+        } else {
+            this.mode = "";
+            $("#familyButton").removeClass("selected");
+
+            $("#carousel").hide();
+            $("#shadow").hide();
+        }
+    };
+};
+
 BullipediaDemoCtrl.prototype.activateAddNode = function(){
-    if (this.mode != "addingNodes"){
-        this.do_clean_menu();
-        this.mode = "addingNodes";
-        $("#ingredientButton").addClass("selected");
-        setTimeout(function(){
-            $(".ui-select-search.input-xs").click();
-            $(".ui-select-search.input-xs").focus();
-        }, 0);
-    }  else{
-        this.mode = "";
-        $("#ingredientButton").removeClass("selected");
-        setTimeout(function(){
-            $(".ui-select-search.input-xs").val("");
-        });
+    if(this.is_small){
+        if (this.mode != "addingNodes"){
+            this.do_clean_menu();
+            this.mode = "addingNodes";
+            $("#ingredientButton").addClass("selected");
+
+            $("#my_selector").show();
+            $("#shadow").show();
+            setTimeout(function(){
+                $(".ui-select-search.input-xs").click();
+                $(".ui-select-search.input-xs").focus();
+            }, 0);
+        }  else{
+            this.mode = "";
+            $("#ingredientButton").removeClass("selected");
+
+            $("#my_selector").hide();
+            $("#shadow").hide();
+            setTimeout(function(){
+                $(".ui-select-search.input-xs").val("");
+            });
+        }
     }
 };
 
@@ -361,7 +392,9 @@ BullipediaDemoCtrl.prototype.refreshSelector = function(data){
 };
 
 BullipediaDemoCtrl.prototype.do_clean_menu = function(){
-    if (this.mode === "addingNodes")
+    if (this.mode === "family")
+        this.activateFamily();
+    else if (this.mode === "addingNodes")
         this.activateAddNode();
     else if (this.mode === "addingEdges")
         this.activateAddEdge();
