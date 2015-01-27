@@ -110,8 +110,6 @@ var BullipediaDemoCtrl = function($scope, Data) {
             $("#my_selector").show();
             $("#shadow").hide(); 
         }
-
-        console.log(this.is_small);
     }.bind(this);
     
     var resizeTimer;
