@@ -31,7 +31,8 @@
         
     </head>
     <body>
-        <div class="owl-container" id="carousel" ng-controller="DemoCtrl as ctrl">
+        <div class="" id="the_father">
+        <div class="owl-container" id="carousel" ng-controller="DemoCtrl as ctrl2">
             <div class="owl-nav-container">
                 <div class="owl-nav owl-prev">
                     <div class="centerer"></div>
@@ -39,7 +40,7 @@
                 </div>
             </div>
             <div class="owl-carousel">
-                <div class="item link" ng-repeat="image in ctrl.images">
+                <div class="item link" ng-repeat="image in ctrl2.images">
                     <div class="item-container">
                         <div class="wrapper">
                             <div class="left">
@@ -73,8 +74,8 @@
 
 
         
-        <div ng-controller="BullipediaDemoCtrl as ctrl">
-            <ui-select multiple id="selector" ng-model="ctrl.selectedColors" theme="bootstrap" ng-disabled="disabled" style="width: 307px;" ng-change="ctrl.updateNodes()" >
+        <div ng-controller="BullipediaDemoCtrl as ctrl" id="second_father">
+            <ui-select multiple id="my_selector" ng-model="ctrl.selectedColors" theme="bootstrap" ng-disabled="disabled" style="width: 307px;" ng-change="ctrl.updateNodes()" >
                 <ui-select-match placeholder="Select colors..." id="test">{{$item.name}}</ui-select-match>
                 <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
                     {{color.name}}
@@ -107,6 +108,7 @@
             </div>
 
             <p id="selection"></p>
+        </div>
         </div>
     </body>
 </html>

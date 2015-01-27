@@ -46,6 +46,7 @@ var DemoCtrl = function($scope, Data) {
     }
     return image.image;
   };
+
 };
 
 
@@ -76,6 +77,42 @@ var BullipediaDemoCtrl = function($scope, Data) {
     this.edges = new vis.DataSet();
 
     this.draw();
+
+    this.is_small = false;
+    
+    var calculate_size = function() {
+        var width =  $(window).width();
+        var height = $(window).height();
+        
+        if (width < 1038){
+            this.is_small = true;
+            //$("#carousel").hide();
+            //$("#selector").hide();
+            $("#my_selector").detach().prependTo("#networkContainer");
+            $("#carousel").detach().prependTo("#networkContainer");
+        }
+        else {
+            if(this.is_small){
+                $("#carousel").detach().prependTo("#the_father");
+                $("#my_selector").detach().prependTo("#second_father");
+            }
+            this.is_small = false;
+            $("#carousel").show();
+            $("#my_selector").show();
+
+            
+        }
+
+        console.log(this.is_small);
+    }.bind(this);
+    
+    var resizeTimer;
+    $(window).resize(function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(calculate_size, 100);
+    });
+
+    calculate_size();
 };
 
 app.filter('propsFilter', function() {
