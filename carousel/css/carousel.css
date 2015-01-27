@@ -10,6 +10,14 @@
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
     border-radius: 1px;
+    background-color: white;
+    z-index: 3;
+}
+
+.owl-container.floating{
+    position: absolute;
+    top: 40%;
+    left: 25%;
 }
 
 .owl-nav-container {

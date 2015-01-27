@@ -89,12 +89,16 @@ var BullipediaDemoCtrl = function($scope, Data) {
             //$("#carousel").hide();
             //$("#selector").hide();
             $("#my_selector").detach().prependTo("#networkContainer");
+            $("#my_selector").addClass("floating");
             $("#carousel").detach().prependTo("#networkContainer");
+            $("#carousel").addClass("floating");
         }
         else {
             if(this.is_small){
                 $("#carousel").detach().prependTo("#the_father");
+                $("#carousel").removeClass("floating");       
                 $("#my_selector").detach().prependTo("#second_father");
+                $("#my_selector").removeClass("floating");       
             }
             this.is_small = false;
             $("#carousel").show();
