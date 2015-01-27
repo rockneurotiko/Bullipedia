@@ -31,7 +31,7 @@
         <link href="css/carousel/carousel.css" rel="stylesheet">
         
     </head>
-    <body>
+    <body style="padding:10px">
         <div class="" id="the_father">
         <div class="owl-container" id="carousel" ng-controller="DemoCtrl as ctrl2">
             <div class="owl-nav-container">
@@ -74,9 +74,9 @@
         <div style="margin-top:50px"></div>
         
         <div ng-controller="BullipediaDemoCtrl as ctrl" id="second_father">
-            <ui-select multiple id="my_selector" ng-model="ctrl.selectedColors" theme="bootstrap" ng-disabled="disabled" style="width: 307px;" ng-change="ctrl.updateNodes()" >
-                <ui-select-match placeholder="Select colors..." id="test">{{$item.name}}</ui-select-match>
-                <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
+            <ui-select multiple id="my_selector" ng-model="ctrl.selectedIngredients" theme="bootstrap" ng-disabled="disabled" style="width: 307px;" ng-change="ctrl.updateNodes()" >
+                <ui-select-match placeholder="Select ingredients..." id="test">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="color in ctrl.availableIngredients | filter:$select.search">
                     {{color.name}}
                 </ui-select-choices>
             </ui-select>
@@ -94,7 +94,7 @@
             </div>
             <br />
             <div id="networkContainer">
-                <div id ="shadow"></div>
+                <div id ="shadow" ng-click="ctrl.do_clean_menu()"></div>
                 <div id="nodesToolbar">
                     <div class= "nodesButton" id ="familyButton" ng-click="ctrl.activateFamily()">FAMILY</div>
                     <div class= "nodesButton" id ="ingredientButton" ng-click="ctrl.activateAddNode()">ADD INGREDIENT</div>

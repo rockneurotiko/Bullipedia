@@ -64,34 +64,38 @@ app.controller('DemoCtrl', DemoCtrl);
 var BullipediaDemoCtrl = function($scope, Data) {
     this.Data = Data;
     
-    this.availableColors = [];
+    this.availableIngredients = [];
     mythis = this;
     $scope.$watch(function () { return Data.getSelected(); }, function (newValue) {
-        if (newValue) mythis.availableColors = newValue;
+        if (newValue) mythis.availableIngredients = newValue;
     });
     
     this.mode = "";
-    this.selectedColors = []; 
-    this.oldSelectedColors = this.selectedColors;
+    this.selectedIngredients = []; 
+    this.oldSelectedIngredients = this.selectedIngredients;
     this.nodes = new vis.DataSet();
     this.edges = new vis.DataSet();
 
     this.draw();
 
-    this.is_small = false;
+    this.is_small = $(window).width() < 1038;
+
+    var first = true;
     
     var calculate_size = function() {
         var width =  $(window).width();
         var height = $(window).height();
         
         if (width < 1038){
-            if (!this.is_small){
+            if (!this.is_small || first){
                 $("#carousel").hide();
                 $("#carousel").detach().prependTo("#networkContainer");
                 $("#carousel").addClass("floating");
                 $("#my_selector").hide();
                 $("#my_selector").detach().prependTo("#networkContainer");
                 $("#my_selector").addClass("floating");
+
+                first = false;
             }
             this.is_small = true;
         }
@@ -118,7 +122,7 @@ var BullipediaDemoCtrl = function($scope, Data) {
         resizeTimer = setTimeout(calculate_size, 100);
     });
 
-    calculate_size();
+    setTimeout(calculate_size, 100);
 };
 
 app.filter('propsFilter', function() {
@@ -155,50 +159,50 @@ app.filter('propsFilter', function() {
 
 BullipediaDemoCtrl.prototype.updateNodes = function (){
     
-    if (this.oldSelectedColors.length > this.selectedColors.length){
-        for (var i = 0; i < this.oldSelectedColors.length; i++){
-            if (this.selectedColors[i] == null){
-                this.removeNode(this.oldSelectedColors[i].id);
+    if (this.oldSelectedIngredients.length > this.selectedIngredients.length){
+        for (var i = 0; i < this.oldSelectedIngredients.length; i++){
+            if (this.selectedIngredients[i] == null){
+                this.removeNode(this.oldSelectedIngredients[i].id);
                 break;
             }
-            if (this.oldSelectedColors[i].id != this.selectedColors[i].id){
-                this.removeNode(this.oldSelectedColors[i].id);
+            if (this.oldSelectedIngredients[i].id != this.selectedIngredients[i].id){
+                this.removeNode(this.oldSelectedIngredients[i].id);
                 break;
             }
         }
     }
     else{
-        for (i = 0; i < this.selectedColors.length; i++){
-            if (this.oldSelectedColors[i] == null){
+        for (i = 0; i < this.selectedIngredients.length; i++){
+            if (this.oldSelectedIngredients[i] == null){
                 this.addNode(i);
                 break;
             }
-            if (this.selectedColors[i].id != this.oldSelectedColors[i].id){
+            if (this.selectedIngredients[i].id != this.oldSelectedIngredients[i].id){
                 this.addNode(i);
                 break;
             }
         }
     }
     
-    this.oldSelectedColors = this.selectedColors;
+    this.oldSelectedIngredients = this.selectedIngredients;
 };
 
 BullipediaDemoCtrl.prototype.addNode = function (index, x, y){
     var tooltip = document.createElement("div");
     var color = this.Data.getNextColor();
     tooltip.className = "toolTip";
-    tooltip.innerHTML = this.selectedColors[index].name;
-    tooltip.style.backgroundColor = color; //this.selectedColors[index].name;
+    tooltip.innerHTML = this.selectedIngredients[index].name;
+    tooltip.style.backgroundColor = color; //this.selectedIngredients[index].name;
 
     var node = {
-        id: this.selectedColors[index].id,
-        label: this.selectedColors[index].name.split(' ').map(function(x){return x[0];}).join('') ,
+        id: this.selectedIngredients[index].id,
+        label: this.selectedIngredients[index].name.split(' ').map(function(x){return x[0];}).join('') ,
         title: tooltip,
         shape: 'circle',        
         fontSize: 16,
         fontColor: 'white',
         color: {
-            background: color, //this.selectedColors[index].name,
+            background: color, //this.selectedIngredients[index].name,
             border: color
         }
         //mass: (index+1) * 0.2
@@ -216,7 +220,7 @@ BullipediaDemoCtrl.prototype.removeNode = function (id){
 
 BullipediaDemoCtrl.prototype.draw = function (){
     
-    for (i=0; i< this.selectedColors.length; i++){
+    for (i=0; i< this.selectedIngredients.length; i++){
         this.addNode(i);
     }
     
@@ -297,8 +301,8 @@ BullipediaDemoCtrl.prototype.draw = function (){
         data.id = idInput.value;
 
         clearPopUp();
-        this.oldSelectedColors.push(this.availableColors[data.id]);
-        this.selectedColors = this.oldSelectedColors.slice();
+        this.oldSelectedIngredients.push(this.availableIngredients[data.id]);
+        this.selectedIngredients = this.oldSelectedIngredients.slice();
         div = document.getElementById('selector').focus();
         //this.scope.$select.activate();
         this.addNode(data.id, data.x, data.y);
@@ -378,11 +382,11 @@ BullipediaDemoCtrl.prototype.activateRemove = function(){
 };
 
 BullipediaDemoCtrl.prototype.refreshSelector = function(data){
-   for (var i = 0; i < this.selectedColors.length; i++){
-        if (this.selectedColors[i].id == data.nodes[0]){
-            this.oldSelectedColors = this.selectedColors;
-            this.oldSelectedColors.splice(i, 1);  //Weird trick to make it update the tags, using only splice makes it to not refresh them properly
-            this.selectedColors = this.oldSelectedColors.slice();
+   for (var i = 0; i < this.selectedIngredients.length; i++){
+        if (this.selectedIngredients[i].id == data.nodes[0]){
+            this.oldSelectedIngredients = this.selectedIngredients;
+            this.oldSelectedIngredients.splice(i, 1);  //Weird trick to make it update the tags, using only splice makes it to not refresh them properly
+            this.selectedIngredients = this.oldSelectedIngredients.slice();
             $(".ui-select-search.input-xs").click();
             break;
         }
