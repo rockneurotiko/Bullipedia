@@ -8,7 +8,6 @@
   <title>CodePen - AngularJS / Bootstrap 3 Navbar Directive</title>
 
   <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
-
   <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
   <link href="https://cdn.rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/input/css/bb-input.css" rel="stylesheet" type="text/css">
   <!-- This are all brand files for the input component -->
@@ -46,6 +45,9 @@
     <!-- Here's the "Angled Navbar" directive in use -->
     <angled-navbar id="navbar" affixed='affixed' brand='brand' inverse='inverse' menus='menus' navfn='navfn(action)' search='search' searchfn='searchfn()'></angled-navbar>
 
+
+    <!-- Bullipedia logo-->
+    <img src="css/IMG/bullipedia_logo.png" id="bullipedia-logo">
     <!-- Login form -->
     <form id="login-form" class="bb-form bb-login" name="LoginForm" ng-controller="LoginCtrl as loginCtrl">
       <div class="close" ng-click="loginCtrl.exit()">

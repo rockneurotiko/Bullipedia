@@ -25,6 +25,9 @@ angular.module('navbarTest',['ngSanitize'])
     action : "singular"
   },
   {
+    //Here is located the logo of Bullipedia
+  },
+  {
     title : "ORGANIZERS",
     action : "singular"
   },
@@ -62,12 +65,17 @@ angular.module('navbarTest',['ngSanitize'])
       break;
       case 'login_display':
       if($scope.login_shown === null) {
+        // If the login form has never been shown, we load it
         login_place = document.getElementById("navbar").children[0].children[0].children[1].children[0].children[5];
         var login_tab = document.getElementById("login-form");
         login_place.appendChild(login_tab);
         document.getElementById("login-form").style.position = "absolute";
         document.getElementById("login-form").style.top = "50px";
         document.getElementById("login-form").style.display = "table";
+
+        var logo_place = document.getElementById("navbar").children[0].children[0].children[1].children[0].children[3];
+        var logo_tab = document.getElementById("bullipedia-logo");
+        logo_place.appendChild(logo_tab);
 
         $scope.login_shown = true;
       } else if ($scope.login_shown === false) {
@@ -144,7 +152,6 @@ angular.module('navbarTest',['ngSanitize'])
       //=== Scope/Attributes Defaults ===//
       
       $scope.defaults = {
-        brand : '<span class="glyphicon glyphicon-certificate"></span>',
         menus : [],
         search : {
           show : false
@@ -243,5 +250,7 @@ angular.module('navbarTest',['ngSanitize'])
 }) // end navbar
 
 .run(function($templateCache){
+  
   $templateCache.put('tmpls/nav/navbar.html','<nav class="navbar" ng-class="{\'navbar-inverse\': inverse,\'navbar-default\': !inverse,\'navbar-fixed-top\': affixed == \'top\',\'navbar-fixed-bottom\': affixed == \'bottom\'}" role="navigation"><div class="container-fluid"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><span class="sr-only">Toggle Navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" ng-click="noop()" ng-bind-html="haveBranding()"></a></div><div class="collapse navbar-collapse" id="navbar-menu"><ul class="nav navbar-nav" ng-if="hasMenus()"><li ng-repeat="menu in menus" ng-class="{true: \'dropdown\'}[hasDropdownMenu(menu)]"><a ng-if="!hasDropdownMenu(menu)" ng-click="navAction(menu.action)">{{menu.title}}</a><a ng-if="hasDropdownMenu(menu)" class="dropdown-toggle" data-toggle="dropdown">{{menu.title}} <b class="caret"></b></a><ul ng-if="hasDropdownMenu(menu)" class="dropdown-menu"><li ng-repeat="item in menu.menu" ng-class="{true: \'divider\'}[isDivider(item)]"><a ng-if="!isDivider(item)" ng-click="navAction(item.action)">{{item.title}}</a></li></ul></li></ul></div></div></nav>');
+
 });

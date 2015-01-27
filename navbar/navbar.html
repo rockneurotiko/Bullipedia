@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+ 	<meta charset="UTF-8"> 
+	<title> Bullipedia - Navbar</title>
+
+	<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+	<script src="js/navbar.js" type="text/javascript"></script>
+
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/input/css/bb-input.css" rel="stylesheet" type="text/css">
+	<!-- This are all brand files for the input component -->
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/input/css/movistar-input.css" rel="stylesheet" type="text/css"/>
+	<link
+	href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/input/css/o2-input.css" rel="stylesheet" type="text/css"/>
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/input/css/telefonica-input.css" rel="stylesheet" type="text/css"/>
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/input/css/vivo-input.css" rel="stylesheet" type="text/css"/>
+	<!-- INCLUDE BUTTON -->
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/buttons/css/bb-button.css" rel="stylesheet" type="text/css">
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/buttons/css/movistar-button.css" rel="stylesheet" type="text/css"/>
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/buttons/css/o2-button.css" rel="stylesheet" type="text/css"/>
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/buttons/css/telefonica-button.css" rel="stylesheet" type="text/css"/>
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/buttons/css/vivo-button.css" rel="stylesheet" type="text/css"/>
+	<!-- INCLUDE CHECKBOX -->
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/fonts/glyphicons-halflings.css" rel="stylesheet" type="text/css" />
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/checkbox/css/bb-checkbox.css" rel="stylesheet" type="text/css"/>
+	<!-- INCLUDE LOGIN CSS -->
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/form/css/bb-form.css" rel="stylesheet" type="text/css"/>
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/login/css/bb-login.css" rel="stylesheet" type="text/css"/>
+	<!-- The following sytlesheet is only used to display pretty this example you don't need to use it -->
+	<link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/login/layout.css" rel="stylesheet" type="text/css">
+	<!-- ANGULARJS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js" type="text/javascript"></script>
+	<!-- CHECKBOX JS -->
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js" type="text/javascript"></script>
+	<script src="https://rawgit.com/sebastianha/angular-bootstrap-checkbox/master/angular-bootstrap-checkbox.js" type="text/javascript"></script>
+	<!-- EXAMPLE JS -->
+	<script src="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/login/example-controller.js" type="text/javascript"></script>
+
+
+
+</head>
+<body>
+	<div id="bullipedia-header">
+		<p>In collaboration with <b>elBullifoundation</b> &  <img src="css/IMG/telefonica.svg"></p>
+		<p class="header-languages">
+			<a><b>ENG</b></a> | 
+			<a>ESP</a> | 
+			<a>CAT</a>
+		</p>
+	</div>
+	<div id="bullipedia-navbar">
+		<ul>
+			<li>
+				<a href="">BULLIPEDIA</a>
+			</li>
+			<li>
+				<a href="">THE CHALLENGE</a>
+			</li>
+			<li>
+				<a href="">CALENDAR</a>
+			</li>
+			<li>
+				<!-- Bullipedia logo-->
+				<a id="bullipedia-logo"><img src="css/IMG/bullipedia_logo.png" id="bullipedia-logo"></a>
+			</li>
+			<li>
+				<a href="">ORGANIZERS</a>
+			</li>
+			<li>
+				<a href="">SPREAD THE WORD!</a>
+			</li>
+			<li id="login-dropdown">
+				<a onclick="show_login()">LOGIN</a>
+				<form id="login-form" class="bb-form bb-login" name="LoginForm" ng-controller="LoginCtrl as loginCtrl">
+					<div class="close" ng-click="loginCtrl.exit()">
+					</div>
+					<h1 class="field-left field-clear">
+						Login
+					</h1>
+					<div class="input-container">
+						<div class="tooltip-required" popover-trigger="mouseenter" popover="This field is mandatory">
+						</div>
+						<input class="telefonica input" type="text" name="inputEmail" placeholder="Email" ng-model="loginCtrl.email" ng-pattern="/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/" ng-required="true" />
+						<div class="telefonica message-container">
+							<p class="error-message negative-required">
+								Required field
+							</p>
+							<p class="error-message negative-info">
+								Please enter a valid email
+							</p>
+						</div>
+					</div>
+					<div class="input-container">
+						<div class="tooltip-required" popover-trigger="mouseenter" popover="This field is mandatory">
+						</div>
+						<input class="telefonica input" type="password" name="inputPass" placeholder="Password" ng-model="loginCtrl.pass" ng-required="true" />
+						<div class="telefonica message-container">
+							<p class="error-message negative">
+								Required field
+							</p>
+						</div>
+					</div>
+					<checkbox class="telefonica checkbox" ng-model="loginCtrl.keep">
+					</checkbox>
+					<div class="checkbox-label">
+						Keep me signed in 
+					</div>
+					<button class="telefonica button medium btt-positive" ng-disabled="!LoginForm.$valid" ng-click="loginCtrl.sendForm()">
+						Login
+					</button>
+					<a class="telefonica forgot" href="">
+						I cannot access my account
+					</a>
+				</form>
+			</li>
+		</ul>
+	</div>
+	<div>	
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+		<h1>eeee</h1>
+	</div>
+</body>
