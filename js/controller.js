@@ -1,6 +1,20 @@
 var app = angular.module("bulli", ['ngSanitize', 'ui.select']);
 
-var DemoCtrl = function($scope, Data) {
+var LoginCtrl = function($rootScope, $scope) {
+  this.keep = false;
+  this.email = "";
+  this.pass = "";
+};
+
+LoginCtrl.prototype.sendForm = function() {
+  alert("User: " + this.email
+        + "\nPass: " + this.pass
+        + "\nKeep: " + this.keep
+       );
+  //send stuff here!
+};
+
+var CarouselCtrl = function($scope, Data) {
     this.images = [];
     this.types = Data.getData();
 
@@ -48,18 +62,6 @@ var DemoCtrl = function($scope, Data) {
   };
 
 };
-
-
-// var DemoCtrl2 = function($scope, Data){
-//     $scope.selected = [];
-//     $scope.$watch(function () { return Data.getSelected(); }, function (newValue) {
-//         if (newValue) $scope.selected = newValue;
-//     });
-// };
-
-app.controller('DemoCtrl', DemoCtrl);
-// app.controller("Demo", DemoCtrl2);
-
 
 var BullipediaDemoCtrl = function($scope, Data) {
     this.Data = Data;
@@ -381,6 +383,6 @@ BullipediaDemoCtrl.prototype.do_clean_menu = function(){
         this.activateRemove();
 };
 
+app.controller('LoginCtrl', ['$rootScope', '$scope', LoginCtrl]);
+app.controller('CarouselCtrl', ['$scope', 'Data', CarouselCtrl]);
 app.controller('BullipediaDemoCtrl', ['$scope', 'Data', BullipediaDemoCtrl]); 
-
-

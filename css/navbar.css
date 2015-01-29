@@ -1,0 +1,104 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+
+@media only screen and (max-width: 1038px) {
+  #bullipedia-navbar {
+    display: none;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#bullipedia-header {
+  position: fixed;
+  padding-left: 20px;
+  background-color: white;
+  height: 37px;
+  width: 100%;
+}
+
+#bullipedia-header p {
+  color: rgb(0,0,0);
+  margin-top: 0;
+  line-height: 2;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  display: inline;
+}
+
+#bullipedia-header p.header-languages {
+  float: right;
+  margin-right: 35px;
+}
+
+#bullipedia-header > p > a {
+  cursor: pointer;
+}
+
+#bullipedia-header > p > b {
+  color: rgb(0,0,0);
+  font-size: 18px;
+}
+
+#bullipedia-header > p.header-languages > a > b {
+  font-size: 12px;
+  color: rgb(59,105,181);
+}
+
+#bullipedia-header > p > img {
+  vertical-align: middle;
+}
+
+#bullipedia-navbar {
+  top:37px;
+  position: fixed;
+  height: 83px;
+  width: 100%;
+  background-color: #000;
+  z-index: 15;
+}
+
+#bullipedia-navbar + div {
+  padding-top: 120px; 
+}
+
+#bullipedia-navbar ul {
+  list-style-type: none;
+  margin: 0 auto;
+  width: 987px;
+  padding: 0;
+  height: 83px;
+}
+
+#bullipedia-navbar li {
+  display: inline;
+  float: left;
+  height: 83px;
+}
+
+#bullipedia-navbar li a{
+  color: #ffffff;
+  height: 100%;
+  width: 100%;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  line-height: 6;
+  vertical-align: middle;
+  padding: 10px 21px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#bullipedia-logo {
+  width:177px;
+  height: 80px;
+}
+
+#login-form {
+  position: absolute;
+  display: none;
+  top: 82px;
+  z-index: 10;
+}
+
