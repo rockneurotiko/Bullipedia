@@ -1,0 +1,48 @@
+#graphAppContainer {
+	max-width: 1000px;
+	margin: auto;
+	width: 90%;
+	font-family: sans-serif;
+	margin-top: 30px;
+	overflow: hidden;
+}
+
+#leftPanel {
+	height: 100%;
+	float: left;	
+}
+
+#rightPanel {
+	float: right;
+	width: 655px;
+}
+
+#rightPanel.centered{
+	float:none;
+	margin:auto;
+}
+
+.subtitle{
+	font-size: 1.2em;
+	font-weight: bold;
+	color: grey;
+	font-family: sans-serif;
+}
+
+#selectContainer{
+	margin-top: 20px
+}
+
+.barra{
+	margin:0;
+	width: 100%;
+	height: 83px;
+	background-color: black;
+}
+
+.barraGris{
+	margin:0;
+	width: 100%;
+	height: 83px;
+	background-color: grey;
+}

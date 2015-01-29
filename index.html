@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="css/NodeMap/tags.css">
         <link rel="stylesheet" href="css/NodeMap/node_map.css">
 
+        <link rel="stylesheet" href="css/layout.css">
 
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
         <!-- Can import owl from CDN (version 2 Beta) -->
@@ -31,84 +32,80 @@
         <link href="css/carousel/carousel.css" rel="stylesheet">
         
     </head>
-    <body style="padding:10px">
-        <div class="" id="the_father">
-        <div class="owl-container" id="carousel" ng-controller="DemoCtrl as ctrl2">
-            <div class="owl-nav-container">
-                <div class="owl-nav owl-prev">
-                    <div class="centerer"></div>
-                    <img src="img/arrow_left_black.png">
-                </div>
-            </div>
-            <div class="owl-carousel">
-                <div class="item link" ng-repeat="image in ctrl2.images">
-                    <div class="item-container">
-                        <div class="wrapper">
-                            <div class="left">
-                                <div class="stick"></div>
-                                <div class="empty"></div>
-                                <div class="stick"></div>
-                            </div>
-                            <div class="content">
-                                <img ng-src="{{select(image)}}">
-                            </div>
-                            <div class="right">
-                                <div class="stick"></div>
-                                <div class="empty"></div>
-                                <div class="stick"></div>
+    <body>
+        <div class="barra"></div>
+        <div ng-controller="BullipediaDemoCtrl as ctrl" class="" id="graphAppContainer">
+            <div id = "leftPanel">
+                <div id="carouselContainer">
+                    <p class = "subtitle">1. Select family</p>
+                    <div class="owl-container" id="carousel" ng-controller="DemoCtrl as ctrl2">
+                        <div class="owl-nav-container">
+                            <div class="owl-nav owl-prev">
+                                <div class="centerer"></div>
+                                <img src="img/arrow_left_black.png">
                             </div>
                         </div>
-                        <div class="owl-text"><p>{{image.name}}</p></div>
+                        <div class="owl-carousel">
+                            <div class="item link" ng-repeat="image in ctrl2.images">
+                                <div class="item-container">
+                                    <div class="wrapper">
+                                        <div class="left">
+                                            <div class="stick"></div>
+                                            <div class="empty"></div>
+                                            <div class="stick"></div>
+                                        </div>
+                                        <div class="content">
+                                            <img ng-src="{{select(image)}}">
+                                        </div>
+                                        <div class="right">
+                                            <div class="stick"></div>
+                                            <div class="empty"></div>
+                                            <div class="stick"></div>
+                                        </div>
+                                    </div>
+                                    <div class="owl-text"><p>{{image.name}}</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-nav-container">
+                            <div class="owl-nav owl-next">
+                                <div class="centerer"></div>
+                                <img src="img/arrow_right_black.png">
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div id="selectContainer">
+                    <p class = "subtitle">2. Select Ingredient</p>
+                    <ui-select multiple id="my_selector" ng-model="ctrl.selectedIngredients" theme="bootstrap" ng-disabled="disabled" style="width: 307px;" ng-change="ctrl.updateNodes()" >
+                        <ui-select-match placeholder="Select ingredients..." id="test">{{$item.name}}</ui-select-match>
+                        <ui-select-choices repeat="color in ctrl.availableIngredients | filter:$select.search">
+                            {{color.name}}
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
             </div>
-            <div class="owl-nav-container">
-                <div class="owl-nav owl-next">
-                    <div class="centerer"></div>
-                    <img src="img/arrow_right_black.png">
+            <div id="rightPanel">
+                <p style="width:653px;text-align:justify">Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per.</p>
+                <div id="networkContainer">
+                    <div id ="shadow" ng-click="ctrl.do_clean_menu()"></div>
+                    <div id="nodesToolbar">
+                        <div class= "nodesButton" id ="familyButton" ng-click="ctrl.activateFamily()">FAMILY</div>
+                        <div class= "nodesButton" id ="ingredientButton" ng-click="ctrl.activateAddNode()">ADD INGREDIENT</div>
+                        <div class= "nodesButton" id ="fusionButton" ng-click="ctrl.activateAddEdge()">FUSION</div>
+                        <div class= "nodesButton" id ="removeButton" ng-click="ctrl.activateRemove()">REMOVE</div>
+                        <div class= "nodesButton" id ="enjoyButton">ENJOY</div>
+                    </div>
+                    <div id="mynetwork"></div>
+                    <div id="nodesFooter"></div>
                 </div>
             </div>
         </div>
-        
-
-        <div style="margin-top:50px"></div>
-        
-        <div ng-controller="BullipediaDemoCtrl as ctrl" id="second_father">
-            <ui-select multiple id="my_selector" ng-model="ctrl.selectedIngredients" theme="bootstrap" ng-disabled="disabled" style="width: 307px;" ng-change="ctrl.updateNodes()" >
-                <ui-select-match placeholder="Select ingredients..." id="test">{{$item.name}}</ui-select-match>
-                <ui-select-choices repeat="color in ctrl.availableIngredients | filter:$select.search">
-                    {{color.name}}
-                </ui-select-choices>
-            </ui-select>
-            
-            <div id="network-popUp">
-                <span id="operation">node</span> <br>
-                <table style="margin:auto;"><tr>
-                    <td>id</td><td><input id="node-id" value="new value"></td>
-                </tr>
-                <tr>
-                    <td>label</td><td><input id="node-label" value="new value"> </td>
-                </tr></table>
-                <input type="button" value="save" id="saveButton"></button>
-                <input type="button" value="cancel" id="cancelButton"></button>
-            </div>
-            <br />
-            <div id="networkContainer">
-                <div id ="shadow" ng-click="ctrl.do_clean_menu()"></div>
-                <div id="nodesToolbar">
-                    <div class= "nodesButton" id ="familyButton" ng-click="ctrl.activateFamily()">FAMILY</div>
-                    <div class= "nodesButton" id ="ingredientButton" ng-click="ctrl.activateAddNode()">ADD INGREDIENT</div>
-                    <div class= "nodesButton" id ="fusionButton" ng-click="ctrl.activateAddEdge()">FUSION</div>
-                    <div class= "nodesButton" id ="removeButton" ng-click="ctrl.activateRemove()">REMOVE</div>
-                    <div class= "nodesButton" id ="enjoyButton">ENJOY</div>
-                </div>
-                <div id="mynetwork"></div>
-                <div id="nodesFooter"></div>
-            </div>
-
-            <p id="selection"></p>
+        <div style="margin-top:50px">
+            <div class="barraGris"></div>
+            <div class="barra"></div>
         </div>
-        </div>
+        <div style="height:1000px;overflow:hidden;background:black">
     </body>
 </html>
 

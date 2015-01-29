@@ -86,8 +86,10 @@ var BullipediaDemoCtrl = function($scope, Data) {
         var width =  $(window).width();
         var height = $(window).height();
         
-        if (width < 1038){
+        if (width < 1080){
             if (!this.is_small || first){
+                $('#leftPanel').hide();
+                $('#rightPanel').addClass('centered');
                 $("#carousel").hide();
                 $("#carousel").detach().prependTo("#networkContainer");
                 $("#carousel").addClass("floating");
@@ -101,17 +103,19 @@ var BullipediaDemoCtrl = function($scope, Data) {
         }
         else {
             if(this.is_small){
-                $("#carousel").detach().prependTo("#the_father");
-                $("#carousel").removeClass("floating");       
-                $("#my_selector").detach().prependTo("#second_father");
+                $("#my_selector").detach().appendTo("#selectContainer");
                 $("#my_selector").removeClass("floating");
+                $("#carousel").detach().appendTo("#carouselContainer");
+                $("#carousel").removeClass("floating");
 
                 if (this.mode === "family" || this.mode === "addingNodes")
                     this.do_clean_menu();
             }
             this.is_small = false;
+            $('#rightPanel').removeClass('centered');
             $("#carousel").show();
             $("#my_selector").show();
+            $("#leftPanel").show();
             $("#shadow").hide(); 
         }
     }.bind(this);
@@ -243,20 +247,6 @@ BullipediaDemoCtrl.prototype.draw = function (){
                 background: "transparent"
             }
         },
-        onAdd: function(data,callback) {
-            var span = document.getElementById('operation');
-            var idInput = document.getElementById('node-id');
-            var labelInput = document.getElementById('node-label');
-            var saveButton = document.getElementById('saveButton');
-            var cancelButton = document.getElementById('cancelButton');
-            var div = document.getElementById('network-popUp');
-            span.innerHTML = "Add Node";
-            idInput.value = 0;
-            labelInput.value = "Red";
-            saveButton.onclick = saveData.bind(this,data,callback);
-            cancelButton.onclick = clearPopUp.bind();
-            div.style.display = 'block';
-        }.bind(this),
 
         onConnect: function(data,callback) {
             callback(data);
@@ -294,19 +284,6 @@ BullipediaDemoCtrl.prototype.draw = function (){
         div.style.display = 'none';
     }
 
-    function saveData(data,callback) {
-        var idInput = document.getElementById('node-id');
-        var labelInput = document.getElementById('node-label');
-        var div = document.getElementById('network-popUp');
-        data.id = idInput.value;
-
-        clearPopUp();
-        this.oldSelectedIngredients.push(this.availableIngredients[data.id]);
-        this.selectedIngredients = this.oldSelectedIngredients.slice();
-        div = document.getElementById('selector').focus();
-        //this.scope.$select.activate();
-        this.addNode(data.id, data.x, data.y);
-    }
 };
 
 BullipediaDemoCtrl.prototype.activateFamily = function(){
