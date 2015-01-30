@@ -97,7 +97,7 @@ var BullipediaDemoCtrl = function($scope, Data) {
       if(v.length === mythis.fusion_array.length){
         mythis.fusion_array.push(v.length);
       }
-      else if(v.length <= mythis.fusion_array.length){
+      else if(v.length <= mythis.fusion_array.length && mythis.fusion_array.length > 1){
         mythis.fusion_array.pop();
       }
     }
