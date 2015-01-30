@@ -21,7 +21,9 @@ app.factory('Data', function(){
                 selected:[]};
 
     var ind_color = 0;
-    var colors = ['#708e14', '#1d1955', '#e62c1f', '#fcbf00', '#d20049', '#6b397d', '#00aeea', '#e9511c'];
+  var colors = ['#708e14', '#1d1955', '#e62c1f', '#fcbf00', '#d20049', '#6b397d', '#00aeea', '#e9511c'];
+
+  var fusion_sel = 0;
     
     return {
         getData: function(){
@@ -37,7 +39,14 @@ app.factory('Data', function(){
             var color = colors[ind_color % colors.length];
             ind_color += 1;
             return color;
-        }
+        },
+      setFusion: function(n){
+        fusion_sel = n;
+      },
+      getFusion: function(){
+        return fusion_sel;
+      }
     };
 });
+
 

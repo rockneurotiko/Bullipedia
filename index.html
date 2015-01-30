@@ -49,7 +49,13 @@
         
         <link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/form/css/bb-form.css" rel="stylesheet" type="text/css"/>
         <link href="https://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/login/css/bb-login.css" rel="stylesheet" type="text/css"/>
-        
+
+
+
+        <!-- DROPDOWN -->
+        <link href="http://rawgit.com/PDI-DGS-Protolab/building-blocks-material/master/components/dropdown/css/bb-dropdown.css" rel="stylesheet" type="text/css"/>
+        <link href="css/fix.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <!-- HEADER  -->
@@ -181,6 +187,30 @@
                             {{color.name}}
                         </ui-select-choices>
                     </ui-select>
+                </div>
+                
+                <div id="fusionContainer">
+                    <p class="subtitle">3. Fusion:</p>
+                    <div class="dropdown-group movistar" ng-controller="DropdownCtrl as ctrl3" dropdown>
+                        <button type="button" class="dropdown-large btn-primary dropdown-toggle movistar" ng-disabled="disabled">
+                            {{ctrl3.selected}} <span class="caret large"></span>
+                        </button>
+                        <ul class="dropdown-menu large"  role="menu">
+                            <!-- <li class="dropdown-item large" ng-repeat="choice in ctrl.selectedIngredients" ng-click="ctrl3.select(choice)"> -->
+                            <li class="dropdown-item large" ng-repeat="choice in ctrl.fusion_array" ng-click="ctrl3.select(choice)">
+                                <a>
+                                    {{choice}}
+                                    <!-- {{choice.name}} -->
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="enjoyContainer">
+                    <button class="telefonica button large btt-positive" ng-click="ctrl.enjoyButton()">
+                        Enjoy
+                    </button>
                 </div>
             </div>
             <div id="rightPanel">

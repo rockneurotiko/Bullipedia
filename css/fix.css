@@ -1,0 +1,24 @@
+.dropdown-large {
+    width: 307px;
+}
+
+.dropdown-menu.large {
+    width: 307px;
+    min-width: 307px;
+    left: 0%;
+    max-height: 147px;
+    overflow: auto;
+}
+
+.dropdown-item.large {
+    height: auto;
+}
+
+.dropdown-item:hover {
+    cursor: pointer;
+}
+
+
+.button.large {
+    width: 307px;
+}

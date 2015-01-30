@@ -30,8 +30,8 @@
 	font-family: sans-serif;
 }
 
-#selectContainer{
-	margin-top: 20px
+#selectContainer, #fusionContainer, #enjoyContainer{
+	margin-top: 48px;
 }
 
 .barra{

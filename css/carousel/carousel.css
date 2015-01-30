@@ -1,5 +1,5 @@
 .owl-container {
-    width: 305px;
+    width: 307px;
     height: 87px;
     display: flex;
     vertical-align: middle;
@@ -84,12 +84,10 @@
     font-family: 'Open Sans';
     font-size: 13.4px;
     color: rgb(51,51,51);
-    
 }
 
 .owl-carousel .owl-item.active.center .owl-text {
     background-color: #FFB505;
-    color: #dddddd;
 }
 
 .item-container:hover {

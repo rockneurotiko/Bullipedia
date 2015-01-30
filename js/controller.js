@@ -1,4 +1,4 @@
-var app = angular.module("bulli", ['ngSanitize', 'ui.select']);
+var app = angular.module("bulli", ['ngSanitize', 'ui.select', 'ui.checkbox', 'ui.bootstrap']);
 
 var LoginCtrl = function($rootScope, $scope) {
   this.keep = false;
@@ -12,6 +12,15 @@ LoginCtrl.prototype.sendForm = function() {
         + "\nKeep: " + this.keep
        );
   //send stuff here!
+};
+
+var DropdownCtrl = function($scope, Data) {
+  this.selected = "Unknown";
+  this.select = function(option){
+    console.log(option);
+    Data.setFusion(option);
+    this.selected = option;
+  };
 };
 
 var CarouselCtrl = function($scope, Data) {
@@ -63,11 +72,12 @@ var CarouselCtrl = function($scope, Data) {
 
 };
 
+
 var BullipediaDemoCtrl = function($scope, Data) {
     this.Data = Data;
     
     this.availableIngredients = [];
-    mythis = this;
+    var mythis = this;
     $scope.$watch(function () { return Data.getSelected(); }, function (newValue) {
         if (newValue) mythis.availableIngredients = newValue;
     });
@@ -78,8 +88,21 @@ var BullipediaDemoCtrl = function($scope, Data) {
     this.nodes = new vis.DataSet();
     this.edges = new vis.DataSet();
 
-    this.draw();
+  this.draw();
 
+  this.fusion_array = [0];
+
+  $scope.$watch(function() {return mythis.selectedIngredients;},function(v){
+    if(v) {
+      if(v.length === mythis.fusion_array.length){
+        mythis.fusion_array.push(v.length);
+      }
+      else if(v.length <= mythis.fusion_array.length){
+        mythis.fusion_array.pop();
+      }
+    }
+  });
+  
     this.is_small = $(window).width() < 1038;
 
     var first = true;
@@ -313,7 +336,6 @@ BullipediaDemoCtrl.prototype.activateAddNode = function(){
             this.do_clean_menu();
             this.mode = "addingNodes";
             $("#ingredientButton").addClass("selected");
-
             $("#my_selector").show();
             $("#shadow").show();
             setTimeout(function(){
@@ -323,7 +345,6 @@ BullipediaDemoCtrl.prototype.activateAddNode = function(){
         }  else{
             this.mode = "";
             $("#ingredientButton").removeClass("selected");
-
             $("#my_selector").hide();
             $("#shadow").hide();
             setTimeout(function(){
@@ -383,6 +404,9 @@ BullipediaDemoCtrl.prototype.do_clean_menu = function(){
         this.activateRemove();
 };
 
+
+
 app.controller('LoginCtrl', ['$rootScope', '$scope', LoginCtrl]);
+app.controller('DropdownCtrl', ['$scope', 'Data', DropdownCtrl]);
 app.controller('CarouselCtrl', ['$scope', 'Data', CarouselCtrl]);
 app.controller('BullipediaDemoCtrl', ['$scope', 'Data', BullipediaDemoCtrl]); 

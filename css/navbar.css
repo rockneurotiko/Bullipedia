@@ -16,6 +16,8 @@ body {
   background-color: white;
   height: 37px;
   width: 100%;
+  top: 0;
+  z-index: 15;
 }
 
 #bullipedia-header p {
@@ -66,7 +68,7 @@ body {
 #bullipedia-navbar ul {
   list-style-type: none;
   margin: 0 auto;
-  width: 987px;
+  width: 1038px;
   padding: 0;
   height: 83px;
 }
