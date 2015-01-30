@@ -1,6 +1,3 @@
-body {
-  font: 10pt sans;
-}
 #mynetwork {
   position: relative;
   width: 100%;
@@ -29,21 +26,6 @@ div.table_description {
 #operation {
   font-size:28px;
 }
-#network-popUp {
-  display:none;
-  position:absolute;
-  top:350px;
-  left:170px;
-  z-index:299;
-  width:250px;
-  height:120px;
-  background-color: #f9f9f9;
-  border-style:solid;
-  border-width:3px;
-  border-color: #5394ed;
-  padding:10px;
-  text-align: center;
-}
 
 .toolTip{
   border-radius: 3px;  
@@ -63,6 +45,7 @@ div.vis.network-frame:lastChild{
   background-color: #f2f2f2;
   width: 100%;
   padding: 5px;
+  text-align: center;
 }
 
 #nodesFooter{
@@ -72,25 +55,25 @@ div.vis.network-frame:lastChild{
 }
 
 #networkContainer{
-  width: 655px;
+  min-width: 655px;
   height: 479px;
   border: 1px solid #cfcece;
   border-radius: 3px;
   position: relative;
   margin: auto;
+  width: 100%;
 }
 
-.floating{
-  position: absolute;
-  top: 40%;
-  left: 27%;
-  z-index: 3;
+.floating{  
+  margin: 150px auto;  
 }
+
 
 .nodesButton:hover{
   background-color: #f9f9f9;  
   border: solid 1px #e0e0e0;
-  cursor: pointer;
+  cursor: pointer;  
+  color: #426cc1;
 }
 
 .nodesButton{
@@ -99,12 +82,13 @@ div.vis.network-frame:lastChild{
   height: 43px;
   line-height: 43px;
   background-repeat: no-repeat;
-  margin-left: 15px;
+  margin-left: 12px;
   border: solid 1px #f2f2f2;
 }
 
 #familyButton:hover, #familyButton.selected{
   background-image: url("../../img/network/family_color.svg");
+  color: #426cc1;  
 }
 #familyButton{
   background-image: url("../../img/network/family_black.svg");
@@ -113,28 +97,9 @@ div.vis.network-frame:lastChild{
   margin-left: 10px;  
 }
 
-#fusionButton:hover, #fusionButton.selected{
-  background-image: url("../../img/network/fusion_color.svg");
-}
-
-#fusionButton{
-  background-image: url("../../img/network/fusion_black.svg");
-  padding-left: 35px;
-  background-position: -20px;
-}
-
-#enjoyButton:hover, #enjoyButton.selected{
-  background-image: url("../../img/network/enjoy_color.svg");
-}
-
-#enjoyButton{
-  background-image: url("../../img/network/enjoy_black.svg");
-  padding-left: 45px;
-  background-position: -15px -15px;
-}
-
 #ingredientButton:hover, #ingredientButton.selected{
   background-image: url("../../img/network/ingredient_color.svg");
+  color: #426cc1; 
 }
 
 #ingredientButton{
@@ -143,8 +108,23 @@ div.vis.network-frame:lastChild{
   background-position: -15px;
 }
 
+#fusionButton:hover, #fusionButton.selected{
+  background-image: url("../../img/network/fusion_color.svg");
+  
+  color: #426cc1;
+}
+
+#fusionButton{
+  background-image: url("../../img/network/fusion_black.svg");
+  padding-left: 35px;
+  background-position: -20px;
+}
+
+
 #removeButton:hover, #removeButton.selected{
   background-image: url("../../img/network/delete_color.svg");
+  
+  color: #426cc1;  
 }
 
 #removeButton{
@@ -153,6 +133,18 @@ div.vis.network-frame:lastChild{
   background-position: -20px;
 }
 
+
+#enjoyButton:hover, #enjoyButton.selected{
+  background-image: url("../../img/network/enjoy_color.svg");
+  
+  color: #426cc1;
+}
+
+#enjoyButton{
+  background-image: url("../../img/network/enjoy_black.svg");
+  padding-left: 45px;
+  background-position: -15px -15px;
+}
 .network-manipulation-editMode {
   display: none !important;
 }
@@ -173,3 +165,12 @@ div.vis.network-frame:lastChild{
   background-color: rgba(0,0,0,0.3);
   display: none;
  }
+
+ #popUp{
+  position: absolute;
+  width: 100%;
+  top: 53px;
+  height: 380px;
+  z-index: 3;  
+  display: none;
+}

@@ -116,11 +116,12 @@ var BullipediaDemoCtrl = function($scope, Data) {
                 $('#leftPanel').hide();
                 $('#rightPanel').addClass('centered');
                 $("#carousel").hide();
-                $("#carousel").detach().prependTo("#networkContainer");
+                $("#carousel").detach().prependTo("#popUp");
                 $("#carousel").addClass("floating");
                 $("#my_selector").hide();
-                $("#my_selector").detach().prependTo("#networkContainer");
+                $("#my_selector").detach().prependTo("#popUp");
                 $("#my_selector").addClass("floating");
+                $('#popUp').show();
 
                 first = false;
             }
@@ -137,6 +138,7 @@ var BullipediaDemoCtrl = function($scope, Data) {
                     this.do_clean_menu();
             }
             this.is_small = false;
+            $('#popUp').hide();
             $('#rightPanel').removeClass('centered');
             $("#carousel").show();
             $("#my_selector").show();
