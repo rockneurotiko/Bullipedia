@@ -103,7 +103,7 @@ var BullipediaDemoCtrl = function($scope, Data) {
     }
   });
   
-    this.is_small = $(window).width() < 1038;
+    this.is_small = $(window).width() < 1080;
 
     var first = true;
     

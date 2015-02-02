@@ -157,7 +157,7 @@ body {
   background-size: 100%;
 }
 
-@media screen and (max-width: 1038px) {
+@media screen and (max-width: 1080px) {
 
   #bullipedia-navbar-mini {
     display: inline;
@@ -203,6 +203,8 @@ body {
   margin: 0;
   display: list-item;
   float: none;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 #bullipedia-navbar-mini.showDropdown .navbar-element {
@@ -210,6 +212,6 @@ body {
 }
 
 #bullipedia-navbar-mini li:last-child {
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid #000;
 }
 
