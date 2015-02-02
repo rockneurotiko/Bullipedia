@@ -85,3 +85,36 @@
 #rightPanel.centered #netDescription{
 	display: none;
 }
+
+.greyBarElementContainer, .blackBarElementContainer {
+	width: 33%;
+	height: 100%;
+	text-align: center;
+	color: white;
+	font-family: "Open Sans";
+	font-size: 12px;
+}
+
+.greyBarElement{
+	padding: 15px;
+	padding-top: 18px;
+	max-width: 400px;
+	margin: auto;
+}
+
+.greyBarElement a:hover{
+	color: #80a8e3;
+	cursor: pointer;
+}
+
+.greyBarElement a{
+	color: #4270b8;
+	text-decoration: none;
+}
+
+
+.greyBarElement .title{
+	font-weight: bold;
+	color:white;
+	font-size: 18px;
+}
