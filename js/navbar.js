@@ -18,7 +18,6 @@ var sd = function(){
   $('#bullipedia-navbar-mini ul').fadeIn(200).addClass('active');
 };
 
-
 var sl = function(){
   $('#login-form').addClass('active').fadeIn();
   $('#login-dropdown').addClass("active");
