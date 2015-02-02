@@ -172,9 +172,10 @@ body {
   }
 
   #login-form {
-    position: relative;
+    position: fixed;
     z-index: 40;
     margin: auto;
+    margin-left: 28%;
   }
 
 }
