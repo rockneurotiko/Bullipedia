@@ -121,8 +121,10 @@ var BullipediaDemoCtrl = function($scope, Data) {
                 $("#my_selector").hide();
                 $("#my_selector").detach().prependTo("#popUp");
                 $("#my_selector").addClass("floating");
-                $('#popUp').show();
+              $('#popUp').show();
 
+              $('#login-form').detach().appendTo($('#login-container'));
+              $('#page-shadow-login').toggleClass('small');
                 first = false;
             }
             this.is_small = true;
@@ -133,7 +135,6 @@ var BullipediaDemoCtrl = function($scope, Data) {
                 $("#my_selector").removeClass("floating");
                 $("#carousel").detach().appendTo("#carouselContainer");
                 $("#carousel").removeClass("floating");
-
                 if (this.mode === "family" || this.mode === "addingNodes")
                     this.do_clean_menu();
             }
@@ -144,6 +145,10 @@ var BullipediaDemoCtrl = function($scope, Data) {
             $("#my_selector").show();
             $("#leftPanel").show();
             $("#shadow").hide(); 
+          //$('#login-form').detach().appendTo($('#login-dropdown'));
+          $('#login-form').detach().appendTo($('#test5'));
+          
+          $('#page-shadow-login').toggleClass('small');
         }
     }.bind(this);
     
