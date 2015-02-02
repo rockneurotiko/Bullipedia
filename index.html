@@ -70,50 +70,50 @@
     </div>
     <div id="bullipedia-navbar">
         <ul>
-            <li>
+            <li class="navbar-element">
                 <a href="">BULLIPEDIA</a>
             </li>
-            <li>
+            <li class="navbar-element">
                 <a href="">THE CHALLENGE</a>
             </li>
-            <li>
+            <li class="navbar-element">
                 <a href="">CALENDAR</a>
             </li>
-            <li id="bullipedia-icon">
+            <li class="navbar-element" id="bullipedia-icon">
                 <!-- Bullipedia logo-->
                 <a><img src="img/navbar/bullipedia_logo.png" class="bullipedia-logo"></a>
             </li>
-            <li>
+            <li class="navbar-element">
                 <a href="">ORGANIZERS</a>
             </li>
-            <li>
+            <li class="navbar-element">
                 <a href="">SPREAD THE WORD!</a>
             </li>
-            <li id="login-dropdown">
-                <a onclick="show_login()">LOGIN</a>
+            <li onclick="show_login()" class="navbar-element" id="login-dropdown">
+                <a>LOGIN</a>
             </li>
         </ul>
         <div id="bullipedia-navbar-mini">
             <a><img src="img/navbar/bullipedia_logo.png" class="bullipedia-logo"></a>
             <button class="hamburguer-button" onclick= "show_dropdown_mini()"></button>
             <ul>
-                <li>
+                <li class="navbar-element">
                     <a href="">BULLIPEDIA</a>
                 </li>
-                <li>
+                <li class="navbar-element">
                     <a href="">THE CHALLENGE</a>
                 </li>
-                <li>
+                <li class="navbar-element">
                     <a href="">CALENDAR</a>
-                </li>
-                <li>
+                </li class="navbar-element">
+                <li class="navbar-element">
                     <a href="">ORGANIZERS</a>
                 </li>
-                <li>
+                <li class="navbar-element">
                     <a href="">SPREAD THE WORD!</a>
                 </li>
-                <li>
-                    <a onclick="show_login()">LOGIN</a>
+                <li onclick="show_login()" class="navbar-element">
+                    <a>LOGIN</a>
                 </li>
             </ul>
         </div>
@@ -161,7 +161,7 @@
             </a>
         </form>
     </div>
-    <div id = "page-shadow-login" class="hidden" ng-click="show_login()"></div>
+    <div id = "page-shadow-login" class="hidden" onclick="show_login()"></div>
 
         <!-- FIN HEADER  -->        
         <div ng-controller="BullipediaDemoCtrl as ctrl" class="" id="graphAppContainer">
