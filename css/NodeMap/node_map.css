@@ -102,7 +102,7 @@ div.vis.network-frame:lastChild{
   background-image: url("../../img/network/family_black.svg");
   background-position: -15px;
   padding-left: 40px;
-  margin-left: 10px;  
+  margin-left: 0px; 
 }
 
 #ingredientButton:hover, #ingredientButton.selected{
