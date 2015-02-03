@@ -1,0 +1,4 @@
+body:after{
+    display:none;
+    content: url("../img/facebook_blanco_50.svg") url("../img/twitter_blanco50.svg") url("../img/Vimeo_blanco_50.svg") url("../img/navbar/menu.svg") url("../../img/network/family_color.svg") url("../../img/network/family_black.svg") url("../../img/network/ingredient_color.svg") url("../../img/network/ingredient_black.svg") url("../../img/network/fusion_color.svg") url("../../img/network/fusion_black.svg") url("../../img/network/delete_color.svg") url("../../img/network/delete_black.svg") url("../../img/network/enjoy_color.svg") url("../../img/network/enjoy_black.svg") url("../../img/network/facebook_gris_30.svg") url("../../img/network/twitter_gris30.svg") url("../../img/network/Vimeo_gris_30.svg");
+}
