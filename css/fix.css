@@ -22,3 +22,11 @@
 .button.large {
     width: 307px;
 }
+
+.ui-select-choices-group:hover{
+	background-color: white !important;
+}
+
+.telefonica.button {
+	font-family: "Open Sans" !important;
+}

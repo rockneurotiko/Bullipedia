@@ -4,7 +4,7 @@ span.ui-select-match-item {
   width: 99px;
   height: 33px;
   color: #848484;
-  font-family: 'Sans';
+  font-family: "Open Sans";
   font-size: 16px;
   border-color: #cfcece;
   margin: 1px;
@@ -47,7 +47,7 @@ span.ui-select-match-item.btn.btn-default.btn-xs span span.ng-binding.ng-scope:h
 
 
 input.ui-select-search.input-xs.ng-valid.ng-dirty, a.ui-select-choices-row-inner {
-  font-family: 'Sans';
+  font-family: "Open Sans";
   font-size: 16px;
   color: #333333;
 }

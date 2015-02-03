@@ -88,6 +88,8 @@ var BullipediaDemoCtrl = function($scope, Data) {
     this.nodes = new vis.DataSet();
     this.edges = new vis.DataSet();
 
+    this.hasResized = false;
+
   this.draw();
 
   this.fusion_array = [0];
@@ -112,16 +114,22 @@ var BullipediaDemoCtrl = function($scope, Data) {
         var height = $(window).height();
         
         if (width < 1080){
+            //If we have no nodes we need to redraw after we add one node
+            if (!this.hasResized && !this.selectedIngredients.length){
+                this.hasResized  = true;
+            }else{//If we have already nodes, we redraw the network
+                setTimeout(function(){this.network.redraw()}.bind(this), 10);
+            }
+            
             if (!this.is_small || first){
                 $('#leftPanel').hide();
                 $('#rightPanel').addClass('centered');
                 $("#carousel").hide();
-                $("#carousel").detach().prependTo("#popUp");
+                $("#carousel").detach().prependTo("#networkContainer");
                 $("#carousel").addClass("floating");
                 $("#my_selector").hide();
-                $("#my_selector").detach().prependTo("#popUp");
-                $("#my_selector").addClass("floating");
-              $('#popUp').show();
+                $("#my_selector").detach().prependTo("#networkContainer");
+                $("#my_selector").addClass("floating");                
 
               $('#login-form').detach().appendTo($('#login-container'));
               $('#page-shadow-login').toggleClass('small');
@@ -137,9 +145,10 @@ var BullipediaDemoCtrl = function($scope, Data) {
                 $("#carousel").removeClass("floating");
                 if (this.mode === "family" || this.mode === "addingNodes")
                     this.do_clean_menu();
+                setTimeout(function(){this.network.redraw()}.bind(this), 10);
             }
             this.is_small = false;
-            $('#popUp').hide();
+            
             $('#rightPanel').removeClass('centered');
             $("#carousel").show();
             $("#my_selector").show();
@@ -221,6 +230,10 @@ BullipediaDemoCtrl.prototype.updateNodes = function (){
     }
     
     this.oldSelectedIngredients = this.selectedIngredients;
+    if (this.hasResized){//This means this is the first node and we need to redraw the network
+        this.network.redraw();
+        this.hasResized = false;
+    }
 };
 
 BullipediaDemoCtrl.prototype.addNode = function (index, x, y){
@@ -306,15 +319,7 @@ BullipediaDemoCtrl.prototype.draw = function (){
         }
     }.bind(this));
 
-    this.network.on("resize", function(params) {console.log(params.width,params.height);});
-    function clearPopUp() {
-        var saveButton = document.getElementById('saveButton');
-        var cancelButton = document.getElementById('cancelButton');
-        saveButton.onclick = null;
-        cancelButton.onclick = null;
-        var div = document.getElementById('network-popUp');
-        div.style.display = 'none';
-    }
+    //this.network.on("resize", function(params) {console.log(params.width,params.height);});
 
 };
 
@@ -327,12 +332,14 @@ BullipediaDemoCtrl.prototype.activateFamily = function(){
 
             $("#carousel").show();
             $("#shadow").show();
+            //$('#popUp').show();
         } else {
             this.mode = "";
             $("#familyButton").removeClass("selected");
 
             $("#carousel").hide();
             $("#shadow").hide();
+            //$('#popUp').hide();
         }
     };
 };
@@ -345,6 +352,7 @@ BullipediaDemoCtrl.prototype.activateAddNode = function(){
             $("#ingredientButton").addClass("selected");
             $("#my_selector").show();
             $("#shadow").show();
+            //$('#popUp').show();
             setTimeout(function(){
                 $(".ui-select-search.input-xs").click();
                 $(".ui-select-search.input-xs").focus();
@@ -354,6 +362,7 @@ BullipediaDemoCtrl.prototype.activateAddNode = function(){
             $("#ingredientButton").removeClass("selected");
             $("#my_selector").hide();
             $("#shadow").hide();
+            //$("#popUp").hide();
             setTimeout(function(){
                 $(".ui-select-search.input-xs").val("");
             });

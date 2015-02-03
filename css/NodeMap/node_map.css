@@ -69,7 +69,11 @@ div.vis.network-frame:lastChild{
 }
 
 .floating{  
-  margin: 150px auto;  
+  margin: 150px auto;
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  z-index: 3;
 }
 
 
