@@ -37,8 +37,7 @@ body {
   font-size: 18px;
 }
 
-#bullipedia-header > p.header-languages > a > b {
-  font-size: 12px;
+#bullipedia-header > p.header-languages > a > b {  
   color: rgb(59,105,181);
 }
 
@@ -126,7 +125,7 @@ body {
 #login-form {
   position: absolute;
   display: none;
-  top: 82px;
+  top: 83px;
   z-index: -1;
   margin-left: 686px;
 }
