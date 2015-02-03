@@ -62,14 +62,16 @@
 }
 
 #greyBar{
-	margin-top: 30px;
-	height: 192px;
+	margin-top: 30px;	
+	min-height: 192px;
+	min-width: 720px;
 	background: #2a2a2a;
 }
 
 #brandsBar{
-	height: 132px;
-	background: black;
+	min-height: 132px;
+	min-width: 720px;
+	background: #141718;
 }
 
 #netDescription{
@@ -84,4 +86,75 @@
 
 #rightPanel.centered #netDescription{
 	display: none;
+}
+
+.greyBarElementContainer, .brandsBarElementContainer {
+	width: 33%;
+	height: 100%;
+	text-align: center;
+	color: white;
+	font-family: "Open Sans";
+	font-size: 12px;	
+	display: inline-table;
+}
+.brandsBarElementContainer {
+	line-height: 131px;
+}
+.greyBarElement{
+	padding: 15px;
+	padding-top: 18px;
+	max-width: 400px;
+	min-width: 230px;
+	margin: auto;	
+}
+
+.greyBarElement a:hover{
+	color: #80a8e3;
+	cursor: pointer;
+}
+
+.greyBarElement a{
+	color: #4270b8;
+	text-decoration: none;
+}
+
+
+.greyBarElement .title{
+	font-weight: bold;
+	color:white;
+	font-size: 18px;
+}
+
+#facebookFooterButton{
+   background: url("../img/facebook_blanco_50.svg") no-repeat;
+	background-position: -9px -6px;
+}
+
+#twitterFooterButton{
+  background: url("../img/twitter_blanco50.svg") no-repeat;
+  background-position: -9px -6px;
+}
+
+#vimeoFooterButton{
+  background: url("../img/Vimeo_blanco_50.svg") no-repeat;
+  background-position: -9px -6px;
+
+}
+
+#socialFooterBar{
+  height: 54px;
+  vertical-align: middle;
+}
+
+#socialFooterBar div{
+	display: inline-block;
+	width: 54px;
+	height: 54px;
+	margin-right:10px;
+}
+
+.brandsBarElement{
+	display: inline-block;
+	width:100%;
+	vertical-align: middle;
 }

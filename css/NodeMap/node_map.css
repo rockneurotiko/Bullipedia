@@ -52,6 +52,10 @@ div.vis.network-frame:lastChild{
   height: 44px;
   background-color: #f2f2f2;
   width: 100%;
+  text-align: right;
+  font-family: "Open Sans";
+  line-height: 44px;
+  color: #949494;
 }
 
 #networkContainer{
@@ -173,4 +177,37 @@ div.vis.network-frame:lastChild{
   height: 380px;
   z-index: 3;  
   display: none;
+}
+
+#facebookNetworkButton{
+   background: url("../../img/network/facebook_gris_30.svg") no-repeat;
+   background-position: -22px -13px;
+}
+
+#twitterNetworkButton{
+  background: url("../../img/network/twitter_gris30.svg") no-repeat;
+  background-position: -20px -15px;
+}
+
+#vimeoNetworkButton{
+  background: url("../../img/network/Vimeo_gris_30.svg") no-repeat;
+  background-position: -21px -16px;
+
+}
+
+#nodesFooter div{
+  display: inline-block;
+}
+
+#socialNetworkBar{
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 25px;
+  margin-left: 10px;
+}
+
+#socialNetworkBar div{
+  width: 32px;
+  height: 32px;
+  margin-right:3px;
 }
