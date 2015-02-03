@@ -80,8 +80,12 @@ div.vis.network-frame:lastChild{
 .nodesButton:hover{
   background-color: #f9f9f9;  
   border: solid 1px #e0e0e0;
-  cursor: pointer;  
-  color: #426cc1;
+  cursor: pointer;
+}
+
+.nodesButton:hover, .nodesButton.selected{
+    color: #426cc1;
+    font-weight: bold;
 }
 
 .nodesButton{
@@ -96,8 +100,8 @@ div.vis.network-frame:lastChild{
 
 #familyButton:hover, #familyButton.selected{
   background-image: url("../../img/network/family_color.svg");
-  color: #426cc1;  
 }
+
 #familyButton{
   background-image: url("../../img/network/family_black.svg");
   background-position: -15px;
@@ -106,8 +110,7 @@ div.vis.network-frame:lastChild{
 }
 
 #ingredientButton:hover, #ingredientButton.selected{
-  background-image: url("../../img/network/ingredient_color.svg");
-  color: #426cc1; 
+  background-image: url("../../img/network/ingredient_color.svg");  
 }
 
 #ingredientButton{
@@ -117,9 +120,7 @@ div.vis.network-frame:lastChild{
 }
 
 #fusionButton:hover, #fusionButton.selected{
-  background-image: url("../../img/network/fusion_color.svg");
-  
-  color: #426cc1;
+  background-image: url("../../img/network/fusion_color.svg");  
 }
 
 #fusionButton{
@@ -130,9 +131,7 @@ div.vis.network-frame:lastChild{
 
 
 #removeButton:hover, #removeButton.selected{
-  background-image: url("../../img/network/delete_color.svg");
-  
-  color: #426cc1;  
+  background-image: url("../../img/network/delete_color.svg");  
 }
 
 #removeButton{
@@ -144,9 +143,7 @@ div.vis.network-frame:lastChild{
 
 #enjoyButton:hover, #enjoyButton.selected{
   background-image: url("../../img/network/enjoy_color.svg");
-  
-  color: #426cc1;
-}
+ }
 
 #enjoyButton{
   background-image: url("../../img/network/enjoy_black.svg");
