@@ -3,7 +3,7 @@
 	margin: auto;
 	width: 90%;
 	
-	margin-top: 30px;
+	margin-top: 37px;
 	overflow: hidden;
 	z-index: 5;
 	font-family: "Open Sans" !important;
@@ -144,7 +144,7 @@
 
 #socialFooterBar{
   height: 54px;
-  vertical-align: middle;
+  margin-top: 20px;
 }
 
 #socialFooterBar div{
