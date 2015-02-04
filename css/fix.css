@@ -6,7 +6,7 @@
     width: 307px;
     min-width: 307px;
     left: 0%;
-    max-height: 147px;
+    max-height: 92px;
     overflow: auto;
 }
 
@@ -24,9 +24,17 @@
 }
 
 .ui-select-choices-group:hover{
-	background-color: white !important;
+    background-color: white !important;
 }
 
 .telefonica.button {
 	font-family: "Open Sans" !important;
+}
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled], .btn-primary.active, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    color: #aaafab;
+    background-color: #f3f3f3;
+    border-color: #cfcece;
+}
+.dropdown-group.open.movistar .dropdown-toggle.movistar {
+    border: 1px solid #cfcece;
 }

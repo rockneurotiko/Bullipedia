@@ -221,13 +221,13 @@
                 <div id="fusionContainer">
                     <p class="subtitle">3. Fusion:</p>
                     <div class="dropdown-group movistar" ng-controller="DropdownCtrl as ctrl3" dropdown>
-                        <button type="button" class="dropdown-large btn-primary dropdown-toggle movistar" ng-disabled="disabled">
+                        <button type="button" class="dropdown-large btn-primary dropdown-toggle movistar" ng-disabled="ctrl.fusion_array.length === 0">
                             {{ctrl3.selected}} <span class="caret large"></span>
                         </button>
                         <ul class="dropdown-menu large"  role="menu">
                             <!-- <li class="dropdown-item large" ng-repeat="choice in ctrl.selectedIngredients" ng-click="ctrl3.select(choice)"> -->
-                            <li class="dropdown-item large" ng-repeat="choice in ctrl.fusion_array" ng-click="ctrl3.select(choice)">
-                                <a>
+                            <li class="dropdown-item large" ng-repeat="choice in ctrl.fusion_array" ng-click="ctrl3.select(choice)" >
+                                <a ng-click="ctrl.do_random_fusion(choice)">
                                     {{choice}}
                                     <!-- {{choice.name}} -->
                                 </a>

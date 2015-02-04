@@ -24,7 +24,7 @@ app.factory('Data', function(){
   var colors = ['#708e14', '#1d1955', '#e62c1f', '#fcbf00', '#d20049', '#6b397d', '#00aeea', '#e9511c'];
 
   var fusion_sel = 0;
-    
+    var message = "You need two nodes";
     return {
         getData: function(){
             return data.types;
@@ -45,7 +45,13 @@ app.factory('Data', function(){
       },
       getFusion: function(){
         return fusion_sel;
-      }
+      },
+        getMessage: function(){
+            return message;
+        },
+        setMessage: function(n){
+            message = n;
+        }
     };
 });
 

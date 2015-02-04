@@ -15,12 +15,17 @@ LoginCtrl.prototype.sendForm = function() {
 };
 
 var DropdownCtrl = function($scope, Data) {
-  this.selected = "Unknown";
+    this.selected = Data.getMessage();
+    
   this.select = function(option){
-    console.log(option);
     Data.setFusion(option);
-    this.selected = option;
+    //this.selected = option;
   };
+    var mythis = this;
+    $scope.$watch(function() {return Data.getMessage();},function(v){
+        if(v) mythis.selected = v;
+    });
+
 };
 
 var CarouselCtrl = function($scope, Data) {
@@ -92,17 +97,20 @@ var BullipediaDemoCtrl = function($scope, Data) {
 
   this.draw();
 
-  this.fusion_array = [0];
+  this.fusion_array = [];
 
-  $scope.$watch(function() {return mythis.selectedIngredients;},function(v){
-    if(v) {
-      if(v.length === mythis.fusion_array.length){
-        mythis.fusion_array.push(v.length);
-      }
-      else if(v.length <= mythis.fusion_array.length && mythis.fusion_array.length > 1){
-        mythis.fusion_array.pop();
-      }
-    }
+    $scope.$watch(function() {return mythis.selectedIngredients;},function(v){
+        if(mythis.selectedIngredients.length >= 2){
+            mythis.fusion_array = [];
+            for(var i=2; i <= mythis.selectedIngredients.length;i++){
+                mythis.fusion_array.push(i);
+            }
+            mythis.Data.setMessage("You can select now.");
+        }
+        else {
+            mythis.fusion_array = [];
+            mythis.Data.setMessage("You need two nodes");
+        }
   });
   
     this.is_small = $(window).width() < 1080;
@@ -420,6 +428,31 @@ BullipediaDemoCtrl.prototype.do_clean_menu = function(){
         this.activateRemove();
 };
 
+var guid = (function() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    return function() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    };
+})();
+
+BullipediaDemoCtrl.prototype.do_random_fusion = function(choice){
+    this.edges.clear();
+    var nodes = this.nodes.getIds();
+    var nl = [];
+    for(var i=0;i<choice;i++){
+        nl.push(nodes.splice(Math.floor(Math.random()*nodes.length),1));
+    }
+    for(var j=0;j<nl.length-1;j++){
+        f=nl[j];
+        t=nl[j+1];
+        this.edges.add({id:guid(), from:f, to:t});
+    }
+};
 
 
 app.controller('LoginCtrl', ['$rootScope', '$scope', LoginCtrl]);
