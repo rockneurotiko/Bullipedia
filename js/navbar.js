@@ -11,11 +11,11 @@ function show_dropdown_mini() {
 }
 
 var hd = function(){
-  $('#bullipedia-navbar-mini ul').fadeOut().removeClass('active');
+  $('#bullipedia-navbar-mini ul').removeClass('active');
 };
 
 var sd = function(){
-  $('#bullipedia-navbar-mini ul').fadeIn(200).addClass('active');
+  $('#bullipedia-navbar-mini ul').addClass('active');
 };
 
 var sl = function(){

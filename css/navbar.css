@@ -154,6 +154,7 @@ body {
   border-radius: 5px;
   background-color: #000;
   background-size: 100%;
+  outline: none;
 }
 
 @media only screen and (max-width: 1095px) {
@@ -187,15 +188,22 @@ body {
         z-index: 39;
     }
     
+    #bullipedia-navbar-mini ul.active{
+        transition: 0.4s;
+        max-height: 1000px;
+    }
+
     #bullipedia-navbar-mini ul{
-        display: none;
+        transition: 0.4s;
+        display: block;
         text-align: center;
         overflow: hidden;
         right: 0px;
         position: fixed;
         width: 300px;
         top: 120px;
-        height: auto;  
+        height: auto;
+        max-height: 0px;  
     }
   
 
