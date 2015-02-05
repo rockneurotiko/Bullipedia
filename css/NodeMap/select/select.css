@@ -107,6 +107,7 @@
 .ui-select-multiple.ui-select-bootstrap {
   height: auto;
   padding: .3em;
+  border-radius: 3px;
 }
 
 .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
