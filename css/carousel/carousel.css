@@ -9,7 +9,7 @@
     border-color: #cfcece;
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
-    border-radius: 1px;
+    border-radius: 3px;
     background-color: white;
     z-index: 3;
 }
