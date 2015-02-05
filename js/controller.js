@@ -39,7 +39,7 @@ var CarouselCtrl = function($scope, Data) {
   angular.forEach(urls, function(url){
     mythis.images.push({
       image: url,
-      name: url.split("/")[1].split(".")[0].toUpperCase(),
+      name: url.split("/")[url.split("/").length-1].split(".")[0].toUpperCase(),
       title: "image-" + mythis.images.length,
       id: mythis.images.length,
       cls: ''
