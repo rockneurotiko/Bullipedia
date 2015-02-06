@@ -99,6 +99,8 @@ var BullipediaDemoCtrl = function($scope, Data) {
 
   this.fusion_array = [];
 
+  this.img_url = "";
+
     $scope.$watch(function() {return mythis.selectedIngredients;},function(v){
         if(mythis.selectedIngredients.length >= 2){
             mythis.fusion_array = [];
@@ -317,6 +319,7 @@ BullipediaDemoCtrl.prototype.draw = function (){
         }.bind(this)
     };
     this.network = new vis.Network(container, data, options);
+    console.log(this);
 
     // add event listeners
     this.network.on('select', function(data) {
@@ -452,6 +455,14 @@ BullipediaDemoCtrl.prototype.do_random_fusion = function(choice){
         t=nl[j+1];
         this.edges.add({id:guid(), from:f, to:t});
     }
+};
+
+BullipediaDemoCtrl.prototype.enjoyButton = function(){
+   var image_url = this.network.frame.canvas.toDataURL(); 
+   var pom = document.createElement('a');
+   pom.setAttribute('href', image_url);
+   pom.setAttribute('download', 'my_recipe.png');
+   pom.click();
 };
 
 
